@@ -8,7 +8,7 @@ export default class Home extends React.Component {
             <div>
 
                 <div className="bg-white">
-
+                    <h1>Home</h1>
                 </div>
 
             </div>

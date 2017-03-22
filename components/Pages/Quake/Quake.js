@@ -8,7 +8,7 @@ export default class Quake extends React.Component {
             <div>
 
                 <div className="bg-white">
-
+                    <h1>Quake</h1>
                 </div>
 
             </div>

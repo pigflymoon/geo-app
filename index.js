@@ -1,22 +1,23 @@
 import React from 'react'
 import {render} from 'react-dom'
 import {
-    HashRouter,
+    BrowserRouter as Router,
     Route
 } from 'react-router-dom'
-import App from './components/App/App'
+import NavLink from './components/Nav/NavLink'
 import Home from './components/Pages/Home/Home'
 import Quake from './components/Pages/Quake/Quake'
 
+
 render((
 
-    <HashRouter>
+    <Router>
         <div>
-            <Route exact path="/" component={App}/>
-            <Route path="/home" component={Home}></Route>
-            <Route path="/quake" component={Quake}></Route>
-
+            <NavLink />
+            <Route exact path="/" component={Home}/>
+            <Route path="/home" component={Home}/>
+            <Route path="/quake" component={Quake}/>
         </div>
-    </HashRouter >
+    </Router >
 
 ), document.getElementById('app'))
