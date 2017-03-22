@@ -1,0 +1,24 @@
+.navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #5d535e;
+  color: #eee;
+  -webkit-display: -webkit-box;
+  -webkit-display: -webkit-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+li {
+  padding: 1em;
+}
