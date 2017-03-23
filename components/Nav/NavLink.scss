@@ -1,24 +1,123 @@
-.navigation {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  background-color: #5d535e;
-  color: #eee;
-  -webkit-display: -webkit-box;
-  -webkit-display: -webkit-flex;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  a {
-    text-decoration: none;
-    color: white;
-  }
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);
+
+//Color Variables
+$black: #000000;
+$color1: #f7f7f7; //Red
+$color2: #232222; //Plum
+$color3: #903749; //Maroon
+
+// Base Styles
+body {
+  background-color: $color1;
+  color: $color2;
+  font-family: 'Oswald', sans-serif;
+  line-height: 2em;
+  text-transform: uppercase;
 }
 
-li {
-  padding: 1em;
+h1 {
+  font-size: 3em;
+  padding: 3em 0 1em 0;
+}
+
+.navBar {
+  background-color: $color2;
+  position: fixed;
+  min-width: 100%;
+}
+
+.logo {
+  background-color: $color1;
+  border-radius: 50px;
+  display: inline-block;
+  height: 45px;
+  margin: 1em 0;
+  width: 45px;
+}
+
+// Content Wrapper
+.wrapper {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0 2%;
+}
+
+// Full Navigation, including mobile menu
+nav {
+  ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    width: 50%;
+
+    a {
+      color: $color1;
+      text-decoration: none;
+      transition: all .5s ease;
+
+      &:hover {
+        color: $color3;
+      }
+    }
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  #menu-toggle {
+    display: none;
+  }
+
+  .label-toggle {
+    display: none;
+  }
+
+  .wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media screen and (max-width: 768px) {
+    ul {
+      background-color: $black;
+      display: block;
+      height: 0;
+      list-style-type: none;
+      opacity: 0;
+      text-align: center;
+      transition: all 1s ease;
+      width: 100%;
+      visibility: hidden;
+    }
+
+    li {
+      border-bottom: 2px solid $color2;
+      color: $color2;
+      display: block;
+      font-size: 1.5em;
+      padding: 2em 0;
+    }
+
+    #menu-toggle:checked ~ ul {
+      opacity: 1;
+      height: 100vh;
+      visibility: visible;
+    }
+
+    .label-toggle {
+      background: linear-gradient(to bottom, $color1 0%, $color1 20%, transparent 20%, transparent 40%, $color1 40%, $color1 60%, transparent 60%, transparent 80%, $color1 80%, $color1 100%); //Gradient Hamburger
+      cursor: pointer;
+      display: block;
+      float: right;
+      height: 35px;
+      margin-top: 1em;
+      width: 35px;
+    }
+
+    .wrapper {
+      display: block;
+    }
+  }
 }

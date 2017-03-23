@@ -4,6 +4,7 @@ import {
     BrowserRouter as Router,
     Route
 } from 'react-router-dom'
+import './style/reset.css'
 import NavLink from './components/Nav/NavLink'
 import Home from './components/Pages/Home/Home'
 import Quake from './components/Pages/Quake/Quake'
