@@ -1,0 +1,27 @@
+.banner {
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  //background-color: color("materialize-red", "lighten-1");
+  background-image: url(https://cdn.froont.com/medne/lk7mtf/_static-uploads/images/thumbnail/temp-bg3.jpg_1600x1058.jpg);
+
+  .title {
+    flex: 0 0 50%;
+    padding-left: 40px;
+    h1 {
+      font-family: Montserrat;
+      font-weight: 600;
+      font-size: 2.8rem;
+      line-height: 1.2;
+
+    }
+    p {
+      font-family: Roboto;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+    }
+  }
+
+}
