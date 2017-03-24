@@ -1,23 +1,21 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import '../stylesheets/components/_NavBar.scss'
 
 export default class NavBar extends React.Component {
     render() {
         return (
             <div>
                 <nav className="navBar grey darken-4">
-                    <nav className="wrapper">
-                        <div className="logo"><i className="fa fa-globe" aria-hidden="true"></i></div>
-                        <input type="checkbox" id="menu-toggle"></input>
-                        <label htmlFor="menu-toggle" className="label-toggle"></label>
-                        <ul>
-                            <li><Link to="/home">Home</Link></li>
-                            <li><Link to="/quake">Quake</Link></li>
-                        </ul>
+                    <div className="wrapper"><div className="logo"><i className="fa fa-globe" aria-hidden="true"></i></div>
+                    <input type="checkbox" id="menu-toggle"></input>
+                    <label htmlFor="menu-toggle" className="label-toggle"></label>
+                    <ul>
+                        <li><Link to="/home">Home</Link></li>
+                        <li><Link to="/quake">Quake</Link></li>
+                    </ul>
 
-                        {this.props.children}
-                    </nav>
+                    {this.props.children}
+                    </div>
                 </nav>
                 <header className="wrapper">
                     <h1>Big ol' Lorem</h1>
