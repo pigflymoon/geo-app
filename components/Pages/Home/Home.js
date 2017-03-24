@@ -1,17 +1,18 @@
 import React from 'react';
-
-import './Home.scss';
+import Page from "../Page";
 
 export default class Home extends React.Component {
     render() {
+        let content;
+        content = <h1>home</h1>;
+
         return (
-            <div>
 
-                <div className="bg-white">
-                    <h1>Home</h1>
-                </div>
+            <Page>
+                { content }
+            </Page>
 
-            </div>
+
         );
 
     }
