@@ -8,7 +8,7 @@ export default class NavLink extends React.Component {
             <div>
                 <nav className="navBar">
                     <nav className="wrapper">
-                        <div className="logo"></div>
+                        <div className="logo"><i className="fa fa-globe" aria-hidden="true"></i></div>
                         <input type="checkbox" id="menu-toggle"></input>
                         <label htmlFor="menu-toggle" className="label-toggle"></label>
                         <ul>
