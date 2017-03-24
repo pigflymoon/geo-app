@@ -1,6 +1,6 @@
 import React, {PropTypes} from "react";
 
-import "../../stylesheets/pages/_page.scss"
+
 import NavBar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 

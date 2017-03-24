@@ -13,7 +13,9 @@
 @import 'layout/header',
 'layout/footer';
 // 5. Components
+@import 'components/navBar';
 // 6. Page-specific styles
+@import 'pages/page';
 @import 'pages/home';
 
 // 7. Themes
