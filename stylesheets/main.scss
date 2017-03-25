@@ -10,6 +10,8 @@
 'base/fonts',
 'base/typography';
 // 4. Layout-related sections
+@import 'layout/grid';
+@import 'layout/container';
 @import 'layout/header',
 'layout/footer';
 // 5. Components

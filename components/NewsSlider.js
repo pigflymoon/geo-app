@@ -83,7 +83,7 @@ export default class NewsSlider extends React.Component {
 
     render() {
         return (
-            <div className="news-slider">
+            <div className="container">
                 <h1>{`${this.props.type}`}</h1>
                 {this.state.loading ?
                     this.renderLoading()
