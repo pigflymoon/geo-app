@@ -393,6 +393,7 @@ $colors: (
 }
 
 // usage: color("name_of_color", "type_of_color")
+// eg. background-color: color("materialize-red", "lighten-1");
 // to avoid to repeating map-get($colors, ...)
 
 @function color($color, $type) {

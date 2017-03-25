@@ -21,13 +21,7 @@ const config = {
             },
             {
                 test: /\.scss$/,
-                use: [{
-                    loader: "style-loader"
-                }, {
-                    loader: "css-loader"
-                }, {
-                    loader: "sass-loader"
-                }]
+                loader: 'style-loader!css-loader!sass-loader'
 
             },
             {
@@ -36,10 +30,10 @@ const config = {
             },
             {
                 test: /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)$/,
-                loader: 'url-loader?limit=8192'
+                loader: 'url-loader?limit=30000'
             },
             {
-                test: /\.(mp4|ogg|svg)$/,
+                test: /\.(mp4|ogg|svg|jpe?g|png|gif)$/,
                 loader: 'file-loader'
             }]
     }
