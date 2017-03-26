@@ -29,10 +29,24 @@ export default class QuakeMap extends React.Component {
     loadFeatures() {
         // let self = this;
         this.map = this.createMap();
-        let posts = this.props.coordinates;
+        let posts = this.props.mapInfo;
+
+        let infoWindow = new google.maps.InfoWindow();
         for (let post of posts) {
             //add markers as a property in self
             let marker = this.createMarker(post.geometry.coordinates[1], post.geometry.coordinates[0], this.map);
+            let time = post.properties.time;
+            let depth = post.properties.depth;
+            let magnitude = post.properties.magnitude;
+            let locality = post.properties.locality;
+
+            marker.addListener('click', function () {
+                infoWindow.close();
+                let infoContent = 'Time: ' + time + "<br /> magnitude: " + magnitude + "<br />Depth: " + depth + "<br />Locality:" + locality;
+                infoWindow.setContent(infoContent);
+                infoWindow.open(this.map, this);
+            });
+
             this.markers.push(marker);
         }
 

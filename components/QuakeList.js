@@ -91,7 +91,7 @@ export default class QuakeList extends React.Component {
                 </div>
 
 
-                <QuakeMap coordinates={this.state.posts} init_lat={init_lat}  init_lng={init_lng}/>
+                <QuakeMap mapInfo={this.state.posts} init_lat={init_lat}  init_lng={init_lng}/>
             </div>
 
         );
