@@ -1,5 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import QuakeMap from './QuakeMap'
+
+const init_lng = 174.885971;
+const init_lat = -40.900557;
 
 export default class QuakeList extends React.Component {
     constructor(props) {
@@ -34,8 +38,7 @@ export default class QuakeList extends React.Component {
                         value.properties.depth = value.properties.depth.toFixed(1) + ' km';
                         array.push(value);
                     }
-
-                    return array;
+                    return array.slice(0,10);
                 }, filterData)
 
                 // Update state to trigger a re-render.
@@ -74,15 +77,21 @@ export default class QuakeList extends React.Component {
 
         return (
 
-            <div>
-                {this.state.posts.map((post, index) =>
-                    <div className="quake-info" key={index}>
-                        <span>NZST: {post.properties.time}</span>
-                        <span className="orange-text">Magnitude: {post.properties.magnitude}</span>
-                        <span>Depth: {post.properties.depth}</span>
-                        <p><i className="fa fa-map-marker red-text text-lighten-3" aria-hidden="true"></i>Locality: {post.properties.locality}</p>
-                    </div>
-                )}
+            <div className="grid">
+                <div className="grid-cell u-1of2 quake-list">
+                    {this.state.posts.map((post, index) =>
+                        <div className="quake-info" key={index}>
+                            <span>NZST: {post.properties.time}</span>
+                            <span className="orange-text">Magnitude: {post.properties.magnitude}</span>
+                            <span>Depth: {post.properties.depth}</span>
+                            <p><i className="fa fa-map-marker red-text text-lighten-3"
+                                  aria-hidden="true"></i>Locality: {post.properties.locality}</p>
+                        </div>
+                    )}
+                </div>
+
+
+                <QuakeMap coordinates={this.state.posts} init_lat={init_lat}  init_lng={init_lng}/>
             </div>
 
         );
@@ -90,7 +99,7 @@ export default class QuakeList extends React.Component {
 
     render() {
         return (
-            <div className="grid-cell u-1of2 quake-list">
+            <div >
                 <h1>{`${this.props.type}`}</h1>
 
                 {this.state.loading ?
