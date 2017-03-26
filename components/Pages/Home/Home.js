@@ -11,7 +11,7 @@ export default class Home extends React.Component {
 
             <Page>
                 <Banner />
-                <NewsSlider type="News" />
+                <NewsSlider type="news" />
                 <div className="container grid">
                     <QuakeList type="Quakes" />
                     <QuakeMap />

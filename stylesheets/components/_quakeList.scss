@@ -1,0 +1,17 @@
+.quake-list {
+  .fa {
+    margin-right: 10px;
+    font-size: 20px;
+  }
+  .quake-info {
+    margin-top: 40px;
+
+    span {
+      &:nth-child(1) {
+        padding-left: 22px;
+      }
+      margin-right: 10px;
+    }
+
+  }
+}

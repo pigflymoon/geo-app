@@ -1,5 +1,9 @@
 //@import "~slick-carousel/slick/slick.css";
 //@import "~slick-carousel/slick/slick-theme.css";
+.slick-slide {
+  font-family: "Roboto";
+  padding: 0 10px;
+}
 
 .slick-next:focus, .slick-next:hover, .slick-prev:focus, .slick-prev:hover {
   color: #000000;
@@ -9,6 +13,12 @@
 
 .slick-next:before, .slick-prev:before {
   color: #000000;
+}
+
+.news-item {
+  span {
+    font-family: "Montserrat";
+  }
 }
 
 

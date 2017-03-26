@@ -74,7 +74,7 @@ export default class NewsSlider extends React.Component {
         return (
             <Slider {...settings} >
                 {this.state.posts.map((post, index) =>
-                    <div key={index}><span>{post.published}</span><h3><a href={post.link}>{post.title}</a></h3>
+                    <div key={index} className="news-item"><span>{post.published}</span><h4><a href={post.link}>{post.title}</a></h4>
                     </div>
                 )}
             </Slider>

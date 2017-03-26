@@ -76,11 +76,11 @@ export default class QuakeList extends React.Component {
 
             <div>
                 {this.state.posts.map((post, index) =>
-                    <div key={index}>
-                        <i></i> <span>NZST:{post.properties.time}</span>
-                        <span>Magnitude:{post.properties.magnitude}</span>
-                        <span>Depth:{post.properties.depth}</span>
-                        <p>Locality:{post.properties.locality}</p>
+                    <div className="quake-info" key={index}>
+                        <span>NZST: {post.properties.time}</span>
+                        <span className="orange-text">Magnitude: {post.properties.magnitude}</span>
+                        <span>Depth: {post.properties.depth}</span>
+                        <p><i className="fa fa-map-marker red-text text-lighten-3" aria-hidden="true"></i>Locality: {post.properties.locality}</p>
                     </div>
                 )}
             </div>

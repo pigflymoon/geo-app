@@ -3,10 +3,12 @@
 // 2. Vendors
 @import 'vendor/normalize';
 // 3. Base stuff
-@import 'base/base',
+@import
+'base/colors',
+'base/base',
 'base/animation',
 'base/breaks',
-'base/colors',
+
 'base/fonts',
 'base/typography';
 // 4. Layout-related sections
