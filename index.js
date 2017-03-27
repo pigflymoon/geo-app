@@ -8,8 +8,8 @@ import {
 import './stylesheets/main.scss'
 
 import Home from './components/Pages/Home/Home'
+import Quakes from './components/Pages/Quakes/Quakes'
 import Quake from './components/Pages/Quake/Quake'
-import Detail from './components/Pages/Detail/Detail'
 
 render((
 
@@ -18,9 +18,10 @@ render((
 
             <Route exact path="/" component={Home}/>
             <Route path="/home" component={Home}/>
-            <Route path="/quake" component={Quake}/>
-            <Route path="/detail" component={Detail}/>
+            <Route path="/quakes" component={Quakes}/>
+            <Route basename="/quake" path="/quake/:publicID" component={Quake}/>
         </div>
     </Router >
+
 
 ), document.getElementById('app'))

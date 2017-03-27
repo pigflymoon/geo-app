@@ -11,7 +11,7 @@ export default class NavBar extends React.Component {
                     <label htmlFor="menu-toggle" className="label-toggle"></label>
                     <ul>
                         <li><Link to="/home">Home</Link></li>
-                        <li><Link to="/quake">Quake</Link></li>
+                        <li><Link to="/quakes">Quakes</Link></li>
                     </ul>
                     {this.props.children}
                     </div>
