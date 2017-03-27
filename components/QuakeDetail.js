@@ -5,7 +5,7 @@ import QuakeMap from './QuakeMap'
 const init_lng = 174.885971;
 const init_lat = -40.900557;
 
-export default class QuakeList extends React.Component {
+export default class QuakeDetail extends React.Component {
     constructor(props) {
         super(props);
 
@@ -86,7 +86,7 @@ export default class QuakeList extends React.Component {
                                 <span className="orange-text">Magnitude: {post.properties.magnitude}</span>
                                 <span>Depth: {post.properties.depth}</span>
                                 <p><i className="fa fa-map-marker red-text text-lighten-3"
-                                      aria-hidden="true"></i><a href="/detail">Locality: {post.properties.locality}</a></p>
+                                      aria-hidden="true"></i>Locality: {post.properties.locality}</p>
                             </div>
                             <div className="grid-cell u-1of8 item-end"> <i className="fa fa-arrow-right"></i></div>
 
