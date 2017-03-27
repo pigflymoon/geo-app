@@ -80,12 +80,16 @@ export default class QuakeList extends React.Component {
             <div className="grid">
                 <div className="grid-cell u-1of2 quake-list">
                     {this.state.posts.map((post, index) =>
-                        <div className="quake-info" key={index}>
-                            <span>NZST: {post.properties.time}</span>
-                            <span className="orange-text">Magnitude: {post.properties.magnitude}</span>
-                            <span>Depth: {post.properties.depth}</span>
-                            <p><i className="fa fa-map-marker red-text text-lighten-3"
-                                  aria-hidden="true"></i>Locality: {post.properties.locality}</p>
+                        <div className="grid quake-info" key={index}>
+                            <div className="grid-cell">
+                                <span>NZST: {post.properties.time}</span>
+                                <span className="orange-text">Magnitude: {post.properties.magnitude}</span>
+                                <span>Depth: {post.properties.depth}</span>
+                                <p><i className="fa fa-map-marker red-text text-lighten-3"
+                                      aria-hidden="true"></i>Locality: {post.properties.locality}</p>
+                            </div>
+                            <div className="grid-cell u-1of8 item-end"> <i className="fa fa-arrow-right"></i></div>
+
                         </div>
                     )}
                 </div>

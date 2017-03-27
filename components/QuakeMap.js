@@ -68,7 +68,7 @@ export default class QuakeMap extends React.Component {
 
     render() {
         return (
-            <div className="grid-cell u-1of2">
+            <div className="grid-cell u-1of2 map-container">
                 <div className="quake-map" ref="mapdiv"></div>
             </div>
         )
