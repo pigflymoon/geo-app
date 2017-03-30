@@ -86,7 +86,7 @@ render((
             <Route exact path="/" component={Home}/>
             <Route path="/home" component={Home}/>
             <Route path="/quakes" component={Quakes}/>
-            <Route path="/quake/12" component={Quake}/>
+            <Route path="/quake/:publicID" component={Quake}/>
             <Route path="/quakeItems" component={QuakeItems}/>
             <Route path="/Topics" component={Topics}/>
         </div>

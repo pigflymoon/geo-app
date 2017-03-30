@@ -10,47 +10,41 @@ export default class QuakeDetail extends React.Component {
         super(props);
 
         this.state = {
-            posts: [],
+            post: [],
             loading: true,
             error: null
         };
     }
 
     componentDidMount() {
-        // Remove the 'www.' to cause a CORS error (and see the error state)
-        var filterData = [];
 
-        axios.get(`https://api.geonet.org.nz/quake?MMI=0`)
+
+        axios.get('https://api.geonet.org.nz/quake/' + this.props.publicID)
             .then(res => {
                 const filterData = [];
                 var posts = res.data.features.reduce((array, value) => {
-                    // if condition is our filter
-                    if (value.properties.mmi >= 2) {
-                        // what happens inside the filter is the map
-                        let time = value.properties.time;
 
-                        time = new Date(time);
-                        time = time.toString().split('GMT')[0];
+                    let time = value.properties.time;
 
-                        // time = time.split(".")[0].replace(/-/g, '/').replace(/T/g, '  ');
-                        value.properties.time = time;
-                        value.properties.magnitude = value.properties.magnitude.toFixed(1);
-                        value.properties.depth = value.properties.depth.toFixed(1) + ' km';
-                        array.push(value);
-                    }
-                    return array.slice(0,10);
+                    time = new Date(time);
+                    time = time.toString().split('GMT')[0];
+                    value.properties.time = time;
+                    value.properties.magnitude = value.properties.magnitude.toFixed(1);
+                    value.properties.depth = value.properties.depth.toFixed(1) + ' km';
+                    array.push(value);
+
+                    return array.slice(0, 10);
                 }, filterData)
 
-                // Update state to trigger a re-render.
-                // Clear any errors, and turn off the loading indiciator.
                 this.setState({
                     posts,
                     loading: false,
                     error: null
                 });
             })
+
+
             .catch(err => {
-                // Something went wrong. Save the error in state and re-render.
                 this.setState({
                     loading: false,
                     error: err
@@ -86,16 +80,17 @@ export default class QuakeDetail extends React.Component {
                                 <span className="orange-text">Magnitude: {post.properties.magnitude}</span>
                                 <span>Depth: {post.properties.depth}</span>
                                 <p><i className="fa fa-map-marker red-text text-lighten-3"
-                                      aria-hidden="true"></i>Locality: {post.properties.locality}</p>
+                                      aria-hidden="true"></i>Locality: {post.properties.locality}
+                                </p>
                             </div>
-                            <div className="grid-cell u-1of8 item-end"> <i className="fa fa-arrow-right"></i></div>
+                            <div className="grid-cell u-1of8 item-end"><i className="fa fa-arrow-right"></i></div>
 
                         </div>
                     )}
                 </div>
 
 
-                <QuakeMap mapInfo={this.state.posts} init_lat={init_lat}  init_lng={init_lng}/>
+                <QuakeMap mapInfo={this.state.post} init_lat={init_lat} init_lng={init_lng}/>
             </div>
 
         );
