@@ -1,4 +1,4 @@
-.quake-list {
+.quakes-list {
   .fa {
     margin-right: 10px;
     font-size: 20px;
@@ -23,4 +23,17 @@
     }
 
   }
+}
+
+.quake-list {
+
+  padding: 30px;
+  .quake-info {
+    .grid {
+      padding: 16px 0px;
+      height: 40px;
+      border-bottom: solid 1px color("grey", "lighten-1");
+    }
+  }
+
 }

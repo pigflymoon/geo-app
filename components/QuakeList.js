@@ -77,8 +77,8 @@ export default class QuakeList extends React.Component {
 
         return (
 
-            <div className="grid">
-                <div className="grid-cell u-1of2 quake-list">
+            <div className="grid quakes-container">
+                <div className="grid-cell u-1of2 quakes-list">
                     {this.state.posts.map((post, index) =>
                         <div className="grid quake-info" key={index}>
                             <div className="grid-cell">

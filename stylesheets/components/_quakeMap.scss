@@ -6,9 +6,12 @@
   width: 100%;
 }
 
-.map-container {
-  border-left: 1px solid color("grey", "lighten-1");
-  padding-left: 10px;
-  margin-left: 10px;
+.quakes-container{
+
+  .map-container {
+    border-left: 1px solid color("grey", "lighten-1");
+    padding-left: 10px;
+    margin-left: 10px;
+  }
 }
 

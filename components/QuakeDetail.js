@@ -72,25 +72,42 @@ export default class QuakeDetail extends React.Component {
         return (
 
             <div className="grid">
+                <QuakeMap mapInfo={this.state.post} init_lat={init_lat} init_lng={init_lng}/>
                 <div className="grid-cell u-1of2 quake-list">
                     {this.state.posts.map((post, index) =>
-                        <div className="grid quake-info" key={index}>
-                            <div className="grid-cell">
-                                <span>NZST: {post.properties.time}</span>
-                                <span className="orange-text">Magnitude: {post.properties.magnitude}</span>
-                                <span>Depth: {post.properties.depth}</span>
-                                <p><i className="fa fa-map-marker red-text text-lighten-3"
-                                      aria-hidden="true"></i>Locality: {post.properties.locality}
-                                </p>
+                        <div className="grid grid-column quake-info" key={index}>
+                            <div className="grid">
+                                <div className="grid-cell u-1of2">NZST</div>
+                                <div className="grid-cell u-1of2">{post.properties.time}</div>
                             </div>
-                            <div className="grid-cell u-1of8 item-end"><i className="fa fa-arrow-right"></i></div>
+                            <div className="grid">
+                                <div className="grid-cell u-1of2">Magnitude</div>
+                                <div className="grid-cell u-1of2"> {post.properties.magnitude}</div>
+                            </div>
+                            <div className="grid">
+                                <div className="grid-cell u-1of2">Depth</div>
+                                <div className="grid-cell u-1of2"> {post.properties.depth}</div>
+                            </div>
+                            <div className="grid">
+                                <div className="grid-cell u-1of2">Locality</div>
+                                <div className="grid-cell u-1of2"> {post.properties.locality}</div>
+                            </div>
+                            <div className="grid">
+                                <div className="grid-cell u-1of2">Latitude—Longtitude</div>
+                                <div className="grid-cell u-1of2">
+                                    <span className="grid-cell u-1of2">
+                                        Latitude: {parseFloat(post.geometry.coordinates[1]).toFixed(2)}—</span>
+                                    <span className="grid-cell u-1of2">
+                                        Longitude: {parseFloat(post.geometry.coordinates[0]).toFixed(2)}</span>
 
+
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>
 
 
-                <QuakeMap mapInfo={this.state.post} init_lat={init_lat} init_lng={init_lng}/>
             </div>
 
         );

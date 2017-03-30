@@ -23,8 +23,7 @@ export default class Quake extends React.Component {
                     Quake
                     <QuakeDetail publicID={this.props.match.params.publicID}/>
 
-                    <div>
-                        <h3>params: {this.props.match.params.publicID}</h3>
+                    <div><h3>params: {this.props.match.params.publicID}</h3>
                     </div>
 
                 </div>

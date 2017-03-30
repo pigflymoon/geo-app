@@ -25,6 +25,12 @@
 .grid-cell.u-3of4 {
   flex: 0 0 75%;
 }
-.grid-cell.u-1of8{
+
+.grid-cell.u-1of8 {
   flex: 0 0 12.5%
+}
+
+.grid-column {
+  display: flex;
+  flex-direction:column;
 }
