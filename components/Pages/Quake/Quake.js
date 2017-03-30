@@ -2,6 +2,7 @@ import React from 'react';
 import Page from "../Page";
 import QuakeDetail from '../../QuakeDetail'
 
+import QuakeHistory from '../../QuakeHistory'
 
 export default class Quake extends React.Component {
 
@@ -15,16 +16,17 @@ export default class Quake extends React.Component {
         console.log('params:', id)
     }
 
+
     render() {
+        const publicID = this.props.match.params.publicID;
         return (
 
             <Page>
                 <div className="container">
                     Quake
-                    <QuakeDetail publicID={this.props.match.params.publicID}/>
+                    <QuakeDetail publicID={publicID}/>
 
-                    <div><h3>params: {this.props.match.params.publicID}</h3>
-                    </div>
+                    <QuakeHistory publicID={publicID}/>
 
                 </div>
 

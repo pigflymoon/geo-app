@@ -108,6 +108,7 @@ export default class QuakeDetail extends React.Component {
                 </div>
 
 
+
             </div>
 
         );
