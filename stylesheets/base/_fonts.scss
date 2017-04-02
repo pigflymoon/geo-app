@@ -1,3 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:700,regular|Roboto');
+
 $fa-font-path: "~font-awesome/fonts";
+// Google Fonts
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans:400italic,700italic,400,700);
+
+// Font Variables
+$source-sans-pro: 'Source Sans Pro', serif;
+$open-sans: 'Open Sans', sans-serif;
+
 @import "~font-awesome/scss/font-awesome";

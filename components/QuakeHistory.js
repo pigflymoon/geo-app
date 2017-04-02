@@ -17,6 +17,7 @@ export default class QuakeHistory extends React.Component {
         axios.get('https://api.geonet.org.nz/quake/history/' + this.props.publicID)
             .then(res => {
                 const filterData = [];
+                console.log('data ', res.data.features)
                 var posts = res.data.features.reduce((array, value) => {
 
                     let time = value.properties.time;
@@ -66,47 +67,35 @@ export default class QuakeHistory extends React.Component {
             className: 'center',
             infinite: true,
             centerPadding: '60px',
-            slidesToShow: 5,
+            slidesToShow: 1,
             swipeToSlide: true,
             afterChange: function (index) {
                 console.log(`Slider Changed to: ${index + 1}, background: #222; color: #bada55`);
             }
         };
         return (
-            <Slider {...settings} >
+            <Slider {...settings} className="flex-slider">
+                <div className="history-container">
 
-                        {this.state.posts.map((post, index) =>
-                            <div className="grid grid-column quake-info" key={index}>
-                                <div className="grid">
-                                    <div className="grid-cell u-1of2">NZST</div>
-                                    <div className="grid-cell u-1of2">{post.properties.time}</div>
-                                </div>
-                                <div className="grid">
-                                    <div className="grid-cell u-1of2">Magnitude</div>
-                                    <div className="grid-cell u-1of2"> {post.properties.magnitude}</div>
-                                </div>
-                                <div className="grid">
-                                    <div className="grid-cell u-1of2">Depth</div>
-                                    <div className="grid-cell u-1of2"> {post.properties.depth}</div>
-                                </div>
-                                <div className="grid">
-                                    <div className="grid-cell u-1of2">Locality</div>
-                                    <div className="grid-cell u-1of2"> {post.properties.locality}</div>
-                                </div>
-                                <div className="grid">
-                                    <div className="grid-cell u-1of2">Latitude—Longtitude</div>
-                                    <div className="grid-cell u-1of2">
-                                    <span className="grid-cell u-1of2">
-                                        Latitude: {parseFloat(post.geometry.coordinates[1]).toFixed(2)}—</span>
-                                        <span className="grid-cell u-1of2">
-                                        Longitude: {parseFloat(post.geometry.coordinates[0]).toFixed(2)}</span>
+                    {this.state.posts.map((post, index) =>
+                        <div className="history-box">
+                            <p>NZST: <span>{post.properties.time}</span></p>
+                            <ul>
+                                <li>Magnitude: <span>{post.properties.magnitude}</span></li>
+                                <li>Depth: <span>{post.properties.depth}</span></li>
+                                <li>Locality: <span>{post.properties.locality}</span></li>
+                                <li>Latitude—Longtitude:
+                                    <span>{parseFloat(post.geometry.coordinates[1]).toFixed(2)}
+                                        —{parseFloat(post.geometry.coordinates[0]).toFixed(2)
+                                        }</span>
+                                </li>
 
 
-                                    </div>
-                                </div>
-                            </div>
-                        )}
+                            </ul>
 
+                        </div>
+                    )}
+                </div>
             </Slider>
 
         );
