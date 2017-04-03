@@ -1,4 +1,10 @@
+
 .quakes-list {
+
+  a:hover {
+    color: color("blue", "darken-1");
+
+  }
   .fa {
     margin-right: 10px;
     font-size: 20px;
@@ -10,6 +16,7 @@
     &:last-child {
       margin-bottom: 0;
     }
+
     p {
       margin: 5px 0;
     }
@@ -20,21 +27,27 @@
       color: color("grey", "lighten-1");
       align-self: center;
       text-align: right;
+      .fa {
+        &:hover {
+          cursor: pointer;
+          color: color("blue", "darken-1");
+        }
+      }
     }
 
   }
 }
 
 .quake-list {
-
-  padding: 30px;
   .quake-info {
-    .grid {
-      padding: 16px 0px;
+
+    .grid-row {
       height: 40px;
       border-bottom: solid 1px color("grey", "lighten-2");
-      color: color("grey", "darken-2");
       background: color("green", "lighten-5");
+      .grid-cell {
+        padding: 9px 12px;
+      }
     }
   }
 
@@ -44,9 +57,9 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
-  font-size: 12px;
+  font-size: 14px;
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-  color: color("grey", "darken-2");
+
   .row {
     display: flex;
     flex-direction: row;

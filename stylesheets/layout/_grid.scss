@@ -1,4 +1,4 @@
-.grid {
+.grid, .grid-row, .grid-column {
   display: flex;
 }
 
@@ -26,11 +26,18 @@
   flex: 0 0 75%;
 }
 
+.grid-cell.u-475 {
+  flex: 0 0 47.5%;
+}
+
 .grid-cell.u-1of8 {
   flex: 0 0 12.5%
 }
 
 .grid-column {
-  display: flex;
-  flex-direction:column;
+  flex-direction: column;
+}
+
+.grid-space-between {
+  justify-content: space-between;
 }

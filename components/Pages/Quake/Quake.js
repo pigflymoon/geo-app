@@ -23,9 +23,7 @@ export default class Quake extends React.Component {
 
             <Page>
                 <div className="container">
-                    Quake
-                    <QuakeDetail publicID={publicID}/>
-
+                    <QuakeDetail publicID={publicID} type="Quake details"/>
                     <QuakeHistory publicID={publicID}/>
 
                 </div>

@@ -70,41 +70,44 @@ export default class QuakeDetail extends React.Component {
         }
 
         return (
-
-            <div className="grid">
+            <div className="grid grid-space-between">
                 <QuakeMap mapInfo={this.state.post} init_lat={init_lat} init_lng={init_lng}/>
-                <div className="grid-cell u-1of2 quake-list">
+                <div className="grid-cell u-475 quake-list">
                     {this.state.posts.map((post, index) =>
                         <div className="grid grid-column quake-info" key={index}>
-                            <div className="grid">
+                            <div className="grid-row">
+                                <div className="grid-cell">Quake-{this.props.publicID}</div>
+                            </div>
+                            <div className="grid-row">
                                 <div className="grid-cell u-1of2">NZST</div>
                                 <div className="grid-cell u-1of2">{post.properties.time}</div>
                             </div>
-                            <div className="grid">
+                            <div className="grid-row">
                                 <div className="grid-cell u-1of2">Magnitude</div>
                                 <div className="grid-cell u-1of2"> {post.properties.magnitude}</div>
                             </div>
-                            <div className="grid">
+                            <div className="grid-row">
                                 <div className="grid-cell u-1of2">Depth</div>
                                 <div className="grid-cell u-1of2"> {post.properties.depth}</div>
                             </div>
-                            <div className="grid">
+                            <div className="grid-row">
                                 <div className="grid-cell u-1of2">Locality</div>
                                 <div className="grid-cell u-1of2"> {post.properties.locality}</div>
                             </div>
-                            <div className="grid">
+                            <div className="grid-row">
                                 <div className="grid-cell u-1of2">Latitude</div>
-                                <div className="grid-cell u-1of2"> {parseFloat(post.geometry.coordinates[1]).toFixed(2)}</div>
+                                <div
+                                    className="grid-cell u-1of2"> {parseFloat(post.geometry.coordinates[1]).toFixed(2)}</div>
                             </div>
-                            <div className="grid">
+                            <div className="grid-row">
                                 <div className="grid-cell u-1of2">Longtitude</div>
-                                <div className="grid-cell u-1of2"> {parseFloat(post.geometry.coordinates[0]).toFixed(2)}</div>
+                                <div
+                                    className="grid-cell u-1of2"> {parseFloat(post.geometry.coordinates[0]).toFixed(2)}</div>
                             </div>
 
                         </div>
                     )}
                 </div>
-
 
 
             </div>

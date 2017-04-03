@@ -5,7 +5,7 @@ import QuakeMap from './QuakeMap'
 const init_lng = 174.885971;
 const init_lat = -40.900557;
 
-export default class QuakeList extends React.Component {
+export default class QuakesList extends React.Component {
     constructor(props) {
         super(props);
 
