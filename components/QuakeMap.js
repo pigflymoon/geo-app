@@ -42,7 +42,7 @@ export default class QuakeMap extends React.Component {
 
             marker.addListener('click', function () {
                 infoWindow.close();
-                let infoContent = 'Time: ' + time + "<br /> magnitude: " + magnitude + "<br />Depth: " + depth + "<br />Locality:" + locality;
+                let infoContent = '<h3><i class="fa fa-clock-o" aria-hidden="true"></i> Time: ' + time + " </h3><p>magnitude: " + magnitude + " </p><p>Depth: " + depth + " </p><p>Locality: " + locality + "</p>";
                 infoWindow.setContent(infoContent);
                 infoWindow.open(this.map, this);
             });
