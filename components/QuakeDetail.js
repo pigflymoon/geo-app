@@ -93,16 +93,14 @@ export default class QuakeDetail extends React.Component {
                                 <div className="grid-cell u-1of2"> {post.properties.locality}</div>
                             </div>
                             <div className="grid">
-                                <div className="grid-cell u-1of2">Latitude—Longtitude</div>
-                                <div className="grid-cell u-1of2">
-                                    <span className="grid-cell u-1of2">
-                                        Latitude: {parseFloat(post.geometry.coordinates[1]).toFixed(2)}—</span>
-                                    <span className="grid-cell u-1of2">
-                                        Longitude: {parseFloat(post.geometry.coordinates[0]).toFixed(2)}</span>
-
-
-                                </div>
+                                <div className="grid-cell u-1of2">Latitude</div>
+                                <div className="grid-cell u-1of2"> {parseFloat(post.geometry.coordinates[1]).toFixed(2)}</div>
                             </div>
+                            <div className="grid">
+                                <div className="grid-cell u-1of2">Longtitude</div>
+                                <div className="grid-cell u-1of2"> {parseFloat(post.geometry.coordinates[0]).toFixed(2)}</div>
+                            </div>
+
                         </div>
                     )}
                 </div>

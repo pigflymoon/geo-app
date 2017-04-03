@@ -75,33 +75,31 @@ export default class QuakeHistory extends React.Component {
         };
         return (
             <div className="history-container">
-                <table id="background-image" summary="Meeting Results">
-                    <thead>
-                    <tr>
-                        <th scope="col">NZST</th>
-                        <th scope="col">Magnitude</th>
-                        <th scope="col">Depth</th>
-                        <th scope="col">Locality</th>
-                        <th scope="col">Latitude</th>
-                        <th scope="col">Longtitude</th>
-                    </tr>
-                    </thead>
 
-                    <tbody>
-                    {this.state.posts.map((post, index) =>
+                <div className="history-box">
+                    <div className="row header">
+                        <div className="cell">NZST</div>
+                        <div className="cell">Magnitude</div>
+                        <div className="cell">Depth</div>
+                        <div className="cell">Locality</div>
+                        <div className="cell">Latitude</div>
+                        <div className="cell">Longtitude</div>
+                    </div>
+                </div>
 
-                        <tr>
-                            <td>{post.properties.time}</td>
-                            <td>{post.properties.magnitude}</td>
-                            <td>{post.properties.depth}</td>
-                            <td>{post.properties.locality}</td>
-                            <td>{parseFloat(post.geometry.coordinates[1]).toFixed(2)}</td>
-                            <td>{parseFloat(post.geometry.coordinates[0]).toFixed(2)}</td>
-                        </tr>
-                    )}
-                    </tbody>
-                </table>
-            </div>
+                {this.state.posts.map((post, index) =>
+                    <div className="history-box" key={index}>
+                        <div className="row">
+                            <div className="cell"><p>{post.properties.time}</p></div>
+                            <div className="cell"><p>{post.properties.magnitude}</p></div>
+                            <div className="cell"><p>{post.properties.depth}</p></div>
+                            <div className="cell"><p>{post.properties.locality}</p></div>
+                            <div className="cell"><p>{parseFloat(post.geometry.coordinates[1]).toFixed(2)}</p></div>
+                            <div className="cell"><p>{parseFloat(post.geometry.coordinates[0]).toFixed(2)}</p></div>
+                        </div>
+                    </div>
+                )}
+            </div >
 
         );
     }
