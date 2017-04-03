@@ -29,7 +29,7 @@ export default class QuakeHistory extends React.Component {
                     value.properties.depth = value.properties.depth.toFixed(1) + ' km';
                     array.push(value);
 
-                    return array.slice(0, 10);
+                    return array
                 }, filterData)
 
                 this.setState({
@@ -74,29 +74,34 @@ export default class QuakeHistory extends React.Component {
             }
         };
         return (
-            <Slider {...settings} className="flex-slider">
-                <div className="history-container">
+            <div className="history-container">
+                <table id="background-image" summary="Meeting Results">
+                    <thead>
+                    <tr>
+                        <th scope="col">NZST</th>
+                        <th scope="col">Magnitude</th>
+                        <th scope="col">Depth</th>
+                        <th scope="col">Locality</th>
+                        <th scope="col">Latitude</th>
+                        <th scope="col">Longtitude</th>
+                    </tr>
+                    </thead>
 
+                    <tbody>
                     {this.state.posts.map((post, index) =>
-                        <div className="history-box">
-                            <p>NZST: <span>{post.properties.time}</span></p>
-                            <ul>
-                                <li>Magnitude: <span>{post.properties.magnitude}</span></li>
-                                <li>Depth: <span>{post.properties.depth}</span></li>
-                                <li>Locality: <span>{post.properties.locality}</span></li>
-                                <li>Latitude—Longtitude:
-                                    <span>{parseFloat(post.geometry.coordinates[1]).toFixed(2)}
-                                        —{parseFloat(post.geometry.coordinates[0]).toFixed(2)
-                                        }</span>
-                                </li>
 
-
-                            </ul>
-
-                        </div>
+                        <tr>
+                            <td>{post.properties.time}</td>
+                            <td>{post.properties.magnitude}</td>
+                            <td>{post.properties.depth}</td>
+                            <td>{post.properties.locality}</td>
+                            <td>{parseFloat(post.geometry.coordinates[1]).toFixed(2)}</td>
+                            <td>{parseFloat(post.geometry.coordinates[0]).toFixed(2)}</td>
+                        </tr>
                     )}
-                </div>
-            </Slider>
+                    </tbody>
+                </table>
+            </div>
 
         );
     }
