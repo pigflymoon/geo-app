@@ -81,7 +81,6 @@ export default class QuakeHistory extends React.Component {
                         <div className="cell">NZST</div>
                         <div className="cell">Magnitude</div>
                         <div className="cell">Depth</div>
-                        <div className="cell">Locality</div>
                         <div className="cell">Latitude</div>
                         <div className="cell">Longtitude</div>
                     </div>
@@ -93,7 +92,6 @@ export default class QuakeHistory extends React.Component {
                             <div className="cell"><p>{post.properties.time}</p></div>
                             <div className="cell"><p>{post.properties.magnitude}</p></div>
                             <div className="cell"><p>{post.properties.depth}</p></div>
-                            <div className="cell"><p>{post.properties.locality}</p></div>
                             <div className="cell"><p>{parseFloat(post.geometry.coordinates[1]).toFixed(2)}</p></div>
                             <div className="cell"><p>{parseFloat(post.geometry.coordinates[0]).toFixed(2)}</p></div>
                         </div>
