@@ -3,6 +3,13 @@ import {PropTypes} from 'react'
 
 
 export default class QuakeMap extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            markersData: []
+        }
+        this.onHandleMarkers = this.onHandleMarkers.bind(this);
+    }
 
     markers = [];
 
@@ -50,7 +57,9 @@ export default class QuakeMap extends React.Component {
             this.markers.push(marker);
         }
 
-
+        this.setState({
+            markersData: this.markers
+        });
     }
 
     createMarker(lat, lng, map) {
@@ -66,9 +75,15 @@ export default class QuakeMap extends React.Component {
         return marker
     }
 
+    onHandleMarkers() {
+        console.log('markers Data', this.state.markersData)
+        this.props.getMarkers(this.state.markersData)
+    }
+
     render() {
         return (
             <div className="grid-cell u-1of2 map-container">
+
                 <div className="quake-map" ref="mapdiv"></div>
             </div>
         )

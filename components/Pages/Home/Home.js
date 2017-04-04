@@ -2,7 +2,7 @@ import React from 'react';
 import Page from "../Page";
 import Banner from '../../Banner'
 import NewsSlider from '../../NewsSlider'
-import QuakesList from '../../QuakesList'
+import QuakesListMap from '../../QuakesListMap'
 
 
 export default class Home extends React.Component {
@@ -13,7 +13,7 @@ export default class Home extends React.Component {
                 <Banner />
                 <NewsSlider type="news" />
                 <div className="container">
-                    <QuakesList type="Quakes" />
+                    <QuakesListMap type="Quakes" />
                 </div>
 
             </Page>
