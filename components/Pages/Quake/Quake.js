@@ -13,7 +13,6 @@ export default class Quake extends React.Component {
     componentDidMount() {
         // from the path `/inbox/messages/:id`
         var id = this.props.match.params.publicID
-        console.log('params:', id)
     }
 
 

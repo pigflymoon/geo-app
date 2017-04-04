@@ -17,7 +17,6 @@ export default class QuakeHistory extends React.Component {
         axios.get('https://api.geonet.org.nz/quake/history/' + this.props.publicID)
             .then(res => {
                 const filterData = [];
-                console.log('data ', res.data.features)
                 var posts = res.data.features.reduce((array, value) => {
 
                     let time = value.properties.time;
@@ -37,7 +36,7 @@ export default class QuakeHistory extends React.Component {
                     loading: false,
                     error: null
                 });
-                console.log('posts are ', posts)
+
             })
             .catch(err => {
                 this.setState({
