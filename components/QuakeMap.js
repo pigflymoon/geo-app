@@ -8,7 +8,6 @@ export default class QuakeMap extends React.Component {
         this.state = {
             markersData: []
         }
-        this.onHandleMarkers = this.onHandleMarkers.bind(this);
     }
 
     markers = [];
@@ -16,6 +15,7 @@ export default class QuakeMap extends React.Component {
     componentDidMount() {
         this.map = this.createMap()
         this.loadFeatures("")
+
     }
 
     createMap() {
@@ -60,6 +60,8 @@ export default class QuakeMap extends React.Component {
         this.setState({
             markersData: this.markers
         });
+
+        this.props.getMarkers(this.markers)//set google markers in props
     }
 
     createMarker(lat, lng, map) {
@@ -75,10 +77,7 @@ export default class QuakeMap extends React.Component {
         return marker
     }
 
-    onHandleMarkers() {
-        console.log('markers Data', this.state.markersData)
-        this.props.getMarkers(this.state.markersData)
-    }
+
 
     render() {
         return (

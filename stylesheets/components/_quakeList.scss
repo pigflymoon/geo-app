@@ -16,6 +16,9 @@
     &:last-child {
       margin-bottom: 0;
     }
+    &:hover {
+      background: color("grey", "lighten-5");
+    }
 
     p {
       margin: 5px 0;

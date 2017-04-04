@@ -3,28 +3,29 @@ import React from 'react';
 export default class QuakesList extends React.Component {
     constructor(props) {
         super(props);
-        var quakeData = this.props
-        console.log('props', this.props.quakeInfo)
-
         this.state = {
             loading: false,
             error: null,
-            posts: this.props.quakeInfo
-
+            posts: this.props.quakeInfo,
+            markers: []
         };
 
-        // var arrData = [];
-        //
-        // for(var v in quakeData){
-        //     arrData.push(quakeData[v]);
-        // }
-        // this.state = {
-        //     posts: arrData,
-        //     markers: []
-        // };
-        //
-        // console.log('arrData', arrData)
-        // console.log('props', this.props.quakeInfo)
+        this.showMarker = this.showMarker.bind(this);
+
+    }
+
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            markers: nextProps.passMarkers
+        })
+    }
+
+    showMarker(index) {
+        var index = parseInt(index)
+        google.maps.event.trigger(this.state.markers[index], 'click')
+
+
     }
 
     renderLoading() {
@@ -46,10 +47,10 @@ export default class QuakesList extends React.Component {
         }
 
         return (
-
             <div className="quakes-list">
+
                 {this.state.posts.map((post, index) =>
-                    <div className="grid quake-info" key={index}>
+                    <div className="grid quake-info" key={index} onMouseOver={() => this.showMarker(index)}>
                         <div className="grid-cell">
                             <span>NZST: {post.properties.time}</span>
                             <span className="orange-text">Magnitude: {post.properties.magnitude}</span>
@@ -71,8 +72,6 @@ export default class QuakesList extends React.Component {
     render() {
         return (
             <div className="grid-cell u-1of2">
-
-
                 {this.state.loading ?
                     this.renderLoading()
                     : this.renderPosts()}
