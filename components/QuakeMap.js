@@ -24,9 +24,8 @@ export default class QuakeMap extends React.Component {
 
     componentDidMount() {
         this.map = this.createMap()
-        console.log(this.props.type)
 
-        if (this.props.type == "SliderMap") {
+        if (this.props.type && this.props.type == "SliderMap") {
             this.loadMapInfo("");
         } else {
             this.loadFeatures("")
@@ -134,7 +133,6 @@ export default class QuakeMap extends React.Component {
     render() {
         return (
             <div className="quake-map" ref="mapdiv"></div>
-
         )
     }
 }

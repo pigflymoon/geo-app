@@ -20,7 +20,6 @@ export default class Quakes extends React.Component {
     }
 
     handleChooseLevel(stat) {
-        console.log('hi level', stat)
         if (stat <= 3) {
             this.setState({level: 3})
         } else if (stat <= 4) {
@@ -38,7 +37,7 @@ export default class Quakes extends React.Component {
     render() {
         return (
             <Page>
-                <div className="container grid-row">
+                <div className="container slider-map">
 
                         <Labels onChooseLevel={this.handleChooseLevel}></Labels>
 

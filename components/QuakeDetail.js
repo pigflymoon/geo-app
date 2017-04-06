@@ -22,6 +22,7 @@ export default class QuakeDetail extends React.Component {
         axios.get('https://api.geonet.org.nz/quake/' + this.props.publicID)
             .then(res => {
                 const filterData = [];
+
                 var posts = res.data.features.reduce((array, value) => {
 
                     let time = value.properties.time;
@@ -71,12 +72,15 @@ export default class QuakeDetail extends React.Component {
 
         return (
             <div className="grid grid-space-between">
-                <QuakeMap mapInfo={this.state.posts} init_lat={init_lat} init_lng={init_lng}/>
+                <div className="grid-cell u-1of2 map-container">
+                    <QuakeMap mapInfo={this.state.posts} init_lat={init_lat} init_lng={init_lng}/>
+                </div>
+
                 <div className="grid-cell u-475 quake-list">
                     {this.state.posts.map((post, index) =>
                         <div className="grid grid-column quake-info" key={index}>
                             <div className="grid-row">
-                                <div className="grid-cell">Quake-{this.props.publicID}</div>
+                                <div className="grid-cell text-center">Quake-{this.props.publicID}</div>
                             </div>
                             <div className="grid-row">
                                 <div className="grid-cell u-1of2">NZST</div>

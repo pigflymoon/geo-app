@@ -14,9 +14,16 @@
 .quakes-container {
 
   .map-container {
-    border-left: 1px solid color("grey", "lighten-1");
-    padding-left: 10px;
     margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid color("grey", "lighten-1");
   }
 }
 
+
+.slider-map {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+
+}

@@ -14,7 +14,6 @@ class HorizontalCustomLabels extends Component {
         this.setState({
             horizontal: value
         })
-        console.log('horizontal ')
         this.props.onChooseLevel(value / 10)
 
 
