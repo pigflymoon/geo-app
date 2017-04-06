@@ -92,8 +92,11 @@ export default class QuakesListMap extends React.Component {
             <div className="grid quakes-container">
 
                 <QuakesList quakeInfo={this.state.posts} passMarkers={this.state.markers}/>
-                <QuakeMap mapInfo={this.state.posts} getMarkers={this.onGetMarkers} init_lat={init_lat}
-                          init_lng={init_lng}/>
+                <div className="grid-cell map-container u-1of2">
+                    <QuakeMap mapInfo={this.state.posts} getMarkers={this.onGetMarkers} init_lat={init_lat}
+                              init_lng={init_lng}/>
+                </div>
+
             </div>
 
         );

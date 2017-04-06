@@ -6,7 +6,11 @@
   width: 100%;
 }
 
-.quakes-container{
+.slide-map-container {
+  height: 800px;
+}
+
+.quakes-container {
 
   .map-container {
     border-left: 1px solid color("grey", "lighten-1");

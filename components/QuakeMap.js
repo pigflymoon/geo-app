@@ -1,6 +1,6 @@
 import React from 'react'
 import {PropTypes} from 'react'
-
+import axios from 'axios';
 
 export default class QuakeMap extends React.Component {
     constructor(props) {
@@ -12,9 +12,25 @@ export default class QuakeMap extends React.Component {
 
     markers = [];
 
+    componentWillReceiveProps(nextProps) {
+
+        if (this.props.type && this.props.type == "SlideMap") {
+
+            this.loadMapInfo(nextProps)
+        }
+
+    }
+
+
     componentDidMount() {
         this.map = this.createMap()
-        this.loadFeatures("")
+        console.log(this.props.type)
+
+        if (this.props.type == "SliderMap") {
+            this.loadMapInfo("");
+        } else {
+            this.loadFeatures("")
+        }
 
     }
 
@@ -31,6 +47,38 @@ export default class QuakeMap extends React.Component {
             this.props.init_lat,
             this.props.init_lng
         )
+    }
+
+    loadMapInfo(nextProps) {
+        let self = this
+        let url = self.props.nps_source
+
+
+        if (nextProps) {
+            url = url + nextProps.level;
+            self.map = self.createMap()
+        } else {
+            url = url + self.props.level;
+        }
+        let infoWindow = new google.maps.InfoWindow()
+        console.log("hi", url)
+        axios.get(url)
+            .then(function (result) {
+                for (let val of result.data.features) {
+                    let marker = self.createMarker(val['geometry']['coordinates'][1], val['geometry']['coordinates'][0], self.map)//self.map is  this.map = this.createMap() pass created map into here
+
+                    marker.addListener('click', function () {
+                        infoWindow.close()
+                        let title = this.title
+                        let infoContent = title
+                        infoWindow.setContent(infoContent)
+                        infoWindow.open(self.map, this)
+                    });
+
+                    self.markers.push(marker)//add markers as a property in self
+
+                } // for
+            }); //then
     }
 
     loadFeatures() {
@@ -82,10 +130,8 @@ export default class QuakeMap extends React.Component {
 
     render() {
         return (
-            <div className="grid-cell u-1of2 map-container">
+            <div className="quake-map" ref="mapdiv"></div>
 
-                <div className="quake-map" ref="mapdiv"></div>
-            </div>
         )
     }
 }
