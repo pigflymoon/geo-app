@@ -34,8 +34,12 @@ export default class QuakeMap extends React.Component {
     }
 
     createMap() {
+        let zoomValue = 6;
+        if (this.props.type && this.props.type == "DetailMap") {
+            zoomValue = 4
+        }
         let mapOptions = {
-            zoom: 6,
+            zoom: zoomValue,
             center: this.mapCenter()
         }
         return new google.maps.Map(this.refs.mapdiv, mapOptions)

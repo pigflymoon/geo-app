@@ -73,7 +73,7 @@ export default class QuakeDetail extends React.Component {
         return (
             <div className="grid grid-space-between">
                 <div className="grid-cell u-1of2 map-container">
-                    <QuakeMap mapInfo={this.state.posts} init_lat={init_lat} init_lng={init_lng}/>
+                    <QuakeMap type="DetailMap" mapInfo={this.state.posts} init_lat={init_lat} init_lng={init_lng}/>
                 </div>
 
                 <div className="grid-cell u-475 quake-list">
