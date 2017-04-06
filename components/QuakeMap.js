@@ -14,7 +14,7 @@ export default class QuakeMap extends React.Component {
 
     componentWillReceiveProps(nextProps) {
 
-        if (this.props.type && this.props.type == "SlideMap") {
+        if (this.props.type && this.props.type == "SliderMap") {
 
             this.loadMapInfo(nextProps)
         }
@@ -61,18 +61,21 @@ export default class QuakeMap extends React.Component {
             url = url + self.props.level;
         }
         let infoWindow = new google.maps.InfoWindow()
-        console.log("hi", url)
+
         axios.get(url)
             .then(function (result) {
-                for (let val of result.data.features) {
-                    let marker = self.createMarker(val['geometry']['coordinates'][1], val['geometry']['coordinates'][0], self.map)//self.map is  this.map = this.createMap() pass created map into here
+                for (let post of result.data.features) {
+                    let marker = self.createMarker(post.geometry.coordinates[1], post.geometry.coordinates[0], self.map);
+                    let time = post.properties.time;
+                    let depth = post.properties.depth;
+                    let magnitude = post.properties.magnitude;
+                    let locality = post.properties.locality;
 
                     marker.addListener('click', function () {
-                        infoWindow.close()
-                        let title = this.title
-                        let infoContent = title
-                        infoWindow.setContent(infoContent)
-                        infoWindow.open(self.map, this)
+                        infoWindow.close();
+                        let infoContent = '<h3><i class="fa fa-clock-o" aria-hidden="true"></i> Time: ' + time + " </h3><p>magnitude: " + magnitude + " </p><p>Depth: " + depth + " </p><p>Locality: " + locality + "</p>";
+                        infoWindow.setContent(infoContent);
+                        infoWindow.open(this.map, this);
                     });
 
                     self.markers.push(marker)//add markers as a property in self
