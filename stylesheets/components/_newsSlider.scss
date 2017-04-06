@@ -2,16 +2,24 @@
 //@import "~slick-carousel/slick/slick-theme.css";
 .slick-slide {
   padding: 0 10px;
+
+  &:hover {
+    background: color("grey", "lighten-5");
+  }
 }
 
 .slick-next:focus, .slick-next:hover, .slick-prev:focus, .slick-prev:hover {
-  color: #000000;
+
+  &::before {
+    color: color("grey", "darken-3");
+  }
   outline: 0;
-  background: 0 0;
+
+
 }
 
 .slick-next:before, .slick-prev:before {
-  color: #000000;
+  color: color("grey", "lighten-1");
 }
 
 
