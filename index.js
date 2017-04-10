@@ -2,8 +2,7 @@ import React from 'react'
 import {render} from 'react-dom'
 import {
     BrowserRouter as Router,
-    Route,
-    Link
+    Route
 } from 'react-router-dom'
 
 import './stylesheets/main.scss'
@@ -11,14 +10,7 @@ import './stylesheets/main.scss'
 import Home from './components/Pages/Home/Home'
 import Quakes from './components/Pages/Quakes/Quakes'
 import Quake from './components/Pages/Quake/Quake'
-
-
-
-const Topic = ({match}) => (
-    <div>
-        <h3>{match.params.topicId}</h3>
-    </div>
-)
+import Chat from './components/Pages/Chat/Chat'
 
 render((
 
@@ -28,6 +20,7 @@ render((
             <Route path="/home" component={Home}/>
             <Route path="/quakes" component={Quakes}/>
             <Route path="/quake/:publicID" component={Quake}/>
+            <Route path="/chat" component={Chat}></Route>
         </div>
     </Router >
 
