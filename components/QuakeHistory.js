@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios'
-import Slider from 'react-slick'
 
 export default class QuakeHistory extends React.Component {
     constructor(props) {

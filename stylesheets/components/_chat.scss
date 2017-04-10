@@ -1,0 +1,35 @@
+.chat-area {
+  .messages {
+    li {
+      list-style: none;
+    }
+    .log {
+      margin: 5px;
+      text-align: center;
+
+    }
+    .message {
+      font-size: 150%;
+    }
+    .username {
+      padding-right: 15px;
+      font-weight: 700;
+    }
+
+  }
+  .input-message {
+    border: 10px solid #000;
+
+    height: 60px;
+
+    outline: none;
+    padding-left: 10px;
+    //position: absolute;
+    //left: 0;
+    //right: 0;
+    //bottom: 0;
+
+    width: 100%;
+
+  }
+}
