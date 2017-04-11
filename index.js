@@ -12,15 +12,6 @@ import Quakes from './components/Pages/Quakes/Quakes'
 import Quake from './components/Pages/Quake/Quake'
 import Chat from './components/Pages/Chat/Chat'
 
-import io from 'socket.io-client'
-
-
-var socket = io('/chat');
-
-// Add a connect listener
-socket.on('connect', function (socket) {
-    console.log('Client side : Connected!');
-});
 
 
 render((
