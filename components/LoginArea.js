@@ -1,5 +1,5 @@
 import React from 'react';
-let username = '';
+
 
 export default class LoginArea extends React.Component {
     constructor(props) {
@@ -17,13 +17,15 @@ export default class LoginArea extends React.Component {
 
     handleChange(event) {
         this.setState({username: event.target.value});
-        console.log(this.state.username)
-
     }
 
-    handleKeyDown(event){
+    handleKeyDown(event) {
         if (event.keyCode == 13) {
-            console.log('state',this.state.isLoggedIn)
+            if (this.state.username) {
+                this.props.getUsername(this.state.username);
+                // this.props.isLogined(true);
+            }
+
         }
     }
 

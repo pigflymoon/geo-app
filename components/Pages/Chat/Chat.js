@@ -13,29 +13,44 @@ socket.on('connect', function (socket) {
     console.log('Client side : Connected!');
 });
 
-function Greeting(props) {
-    const isLoggedIn = props.isLoggedIn;
-    if (isLoggedIn) {
-        return <ChatArea/>;
-    }
-    return <LoginArea />;
-}
+
 export default class Chat extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoggedIn: false
-        }
+            isLoggedIn: false,
+            username: ''
+        };
+        this.handleUsername = this.handleUsername.bind(this);
     }
+
+    handleUsername(name) {
+        this.setState({
+            isLoggedIn: true,
+            username: name
+        })
+
+    }
+
+
+
+    renderLoginArea() {
+        return (
+            <LoginArea getUsername={this.handleUsername}/>
+        )
+    }
+
+    renderChatArea() {
+        return (
+            <ChatArea/>
+        )
+    }
+
 
     render() {
         return (
             <Page>
-                <div className="container">
-                    <Greeting isLoggedIn={this.state.isLoggedIn}/>
-
-                </div>
-
+                {this.state.isLoggedIn ? this.renderChatArea() : this.renderLoginArea()}
             </Page>
         )
 
