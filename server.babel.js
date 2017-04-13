@@ -8,8 +8,21 @@ const server = http.createServer(app)
 const serverIo = io(server)
 const port = process.env.PORT || 3000
 
-var chat = serverIo.of('/chat').on('connection',function (socket) {
-    console.log('server side: a user connected with id %s',socket.id);
+var numUsers = 0;
+
+var chat = serverIo.of('/chat').on('connection', function (socket) {
+    console.log('server side: a user connected with id %s', socket.id);
+    socket.on('add user', function (username) {
+        socket.username = username;
+        ++numUsers;
+        socket.emit('login', {
+            numUsers: numUsers
+        });
+        socket.broadcast.emit('user joined', {
+            username: socket.username,
+            numUsers: numUsers
+        });
+    })
 })
 
 
