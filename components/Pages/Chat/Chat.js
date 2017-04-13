@@ -66,13 +66,13 @@ export default class Chat extends React.Component {
 
     renderLoginArea() {
         return (
-            <LoginArea getUsername={this.handleUsername}  />
+            <LoginArea getUsername={this.handleUsername}/>
         )
     }
 
     renderChatArea() {
         return (
-            <ChatArea Chatname={this.state.username} getMessages={this.state.messages} />
+            <ChatArea chatname={this.state.username} getMessages={this.state.messages} socket={socket}/>
         )
     }
 

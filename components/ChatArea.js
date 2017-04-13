@@ -3,31 +3,30 @@ import ChatMessages from './ChatMessages'
 import ChatInputMessage from './ChatInputMessage'
 
 export default class ChatArea extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            username: ''
+            username: '',
+            messageInfo: ''
         };
-        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleMessageInfo = this.handleMessageInfo.bind(this);
     }
 
-
-
-    handleKeyDown(event) {
-        if (event.keyCode == 13) {
-            let chatName = this.props.Chatname;
-            if (chatName) {
-
-            }
-        }
+    handleMessageInfo(info) {
+        console.log('info', info)
+        this.setState({
+            username: this.props.chatname,
+            messageInfo: info
+        })
     }
 
     render() {
         return (
             <div className="chat-area grid-column">
                 <h1>Chat Area</h1>
-                <ChatMessages messages={this.props.getMessages} />
-                <ChatInputMessage />
+                <ChatMessages chatname={this.state.username} messages={this.props.getMessages} getMessageInfo={this.state.messageInfo}/>
+                <ChatInputMessage  socket={this.props.socket} passMessageInfo={this.handleMessageInfo}/>
             </div>
         )
     }

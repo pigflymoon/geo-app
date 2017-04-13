@@ -23,7 +23,14 @@ var chat = serverIo.of('/chat').on('connection', function (socket) {
             username: socket.username,
             numUsers: numUsers
         });
-    })
+    });
+
+    // when the client emits 'stop typing', we broadcast it to others
+    socket.on('stop typing', function () {
+        socket.broadcast.emit('stop typing', {
+            username: socket.username
+        });
+    });
 })
 
 
