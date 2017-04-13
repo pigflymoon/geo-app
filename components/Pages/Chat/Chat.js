@@ -6,30 +6,15 @@ import ChatArea from '../../ChatArea'
 import io from 'socket.io-client'
 
 
-var socket = io('/chat');
 var connected = false;
+var message = '';
 
-function addParticipantsMessage(data) {
-    var message = '';
-    console.log('data number',data)
-    if (data.numUsers === 1) {
-        message += "there's 1 participant";
-    } else {
-        message += "there are " + data.numUsers + " participants";
-    }
-}
+
+var socket = io('/chat');
 
 // Add a connect listener
 socket.on('connect', function (socket) {
     console.log('Client side : Connected!');
-});
-
-socket.on('login', function (data) {
-    connected = true;
-    // Display the welcome message
-    var message = "Welcome to Socket.IO Chat – ";
-    console.log('data', data)
-    addParticipantsMessage(data);
 });
 
 
@@ -39,33 +24,55 @@ export default class Chat extends React.Component {
         this.state = {
             isLoggedIn: false,
             connected: false,
-            username: ''
+            username: '',
+            messages: ''
         };
         this.handleUsername = this.handleUsername.bind(this);
 
     }
 
 
-
     handleUsername(name) {
-        if (name.trim()) {
+        let username = name.trim();
+        if (username) {
             this.setState({
                 isLoggedIn: true,
-                username: name
+                username: username
             });
-            socket.emit('add user', name);
+
+            self = this;
+            socket.on('login', function (data) {
+
+                connected = true;
+                // Display the welcome message
+                var message = "Welcome to Socket.IO Chat – ";
+                console.log('data', data)
+                if (data.numUsers === 1) {
+                    message += "there's 1 participant";
+                } else {
+                    message += "there are " + data.numUsers + " participants";
+                }
+                self.setState({
+                    messages: message
+                })
+                //
+
+            });
+
+            socket.emit('add user', username);
+
         }
     }
 
     renderLoginArea() {
         return (
-            <LoginArea getUsername={this.handleUsername}/>
+            <LoginArea getUsername={this.handleUsername}  />
         )
     }
 
     renderChatArea() {
         return (
-            <ChatArea Chatname={this.state.username}/>
+            <ChatArea Chatname={this.state.username} getMessages={this.state.messages} />
         )
     }
 

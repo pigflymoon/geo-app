@@ -14,6 +14,7 @@ var chat = serverIo.of('/chat').on('connection', function (socket) {
     console.log('server side: a user connected with id %s', socket.id);
     socket.on('add user', function (username) {
         socket.username = username;
+        console.log('username :', username);
         ++numUsers;
         socket.emit('login', {
             numUsers: numUsers

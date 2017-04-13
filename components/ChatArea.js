@@ -11,20 +11,22 @@ export default class ChatArea extends React.Component {
         this.handleKeyDown = this.handleKeyDown.bind(this);
     }
 
+
+
     handleKeyDown(event) {
         if (event.keyCode == 13) {
             let chatName = this.props.Chatname;
             if (chatName) {
-                // sendMessage();
+
             }
         }
     }
 
     render() {
         return (
-            <div className="chat-area grid-column" >
+            <div className="chat-area grid-column">
                 <h1>Chat Area</h1>
-                <ChatMessages />
+                <ChatMessages messages={this.props.getMessages} />
                 <ChatInputMessage />
             </div>
         )
