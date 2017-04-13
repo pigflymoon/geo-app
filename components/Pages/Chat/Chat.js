@@ -32,8 +32,6 @@ export default class Chat extends React.Component {
 
     }
 
-
-
     renderLoginArea() {
         return (
             <LoginArea getUsername={this.handleUsername}/>
@@ -46,13 +44,11 @@ export default class Chat extends React.Component {
         )
     }
 
-
     render() {
         return (
             <Page>
                 {this.state.isLoggedIn ? this.renderChatArea() : this.renderLoginArea()}
             </Page>
         )
-
     }
 }
