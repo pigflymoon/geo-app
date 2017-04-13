@@ -23,7 +23,6 @@ export default class LoginArea extends React.Component {
         if (event.keyCode == 13) {
             if (this.state.username) {
                 this.props.getUsername(this.state.username);
-                // this.props.isLogined(true);
             }
 
         }

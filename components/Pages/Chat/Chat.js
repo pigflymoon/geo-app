@@ -25,11 +25,12 @@ export default class Chat extends React.Component {
     }
 
     handleUsername(name) {
-        this.setState({
-            isLoggedIn: true,
-            username: name
-        })
-
+        if (name.trim()) {
+            this.setState({
+                isLoggedIn: true,
+                username: name
+            })
+        }
     }
 
     renderLoginArea() {
