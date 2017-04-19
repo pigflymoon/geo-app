@@ -1,5 +1,6 @@
 import React from 'react';
 import Page from "../Page";
+import ParticipantArea from '../../ParticipantArea'
 import LoginArea from '../../LoginArea'
 import ChatArea from '../../ChatArea'
 
@@ -31,7 +32,6 @@ export default class Chat extends React.Component {
 
     }
 
-
     handleUsername(name) {
         let username = name.trim();
         if (username) {
@@ -42,18 +42,13 @@ export default class Chat extends React.Component {
 
             self = this;
             socket.on('login', function (data) {
+                console.log('login data', data)
 
                 connected = true;
-                // Display the welcome message
-                var message = "Welcome to Socket.IO Chat – ";
-                console.log('data', data)
-                if (data.numUsers === 1) {
-                    message += "there's 1 participant";
-                } else {
-                    message += "there are " + data.numUsers + " participants";
-                }
+                // self.addParticipantsMessage(data);
                 self.setState({
-                    messages: message
+                    messages: data,
+                    usernumbers: data.numUsers
                 })
                 //
 
@@ -61,8 +56,17 @@ export default class Chat extends React.Component {
 
             socket.emit('add user', username);
 
+            // Whenever the server emits 'user joined', log it in the chat body
+            socket.on('user joined', function (data) {
+                // log(data.username + ' joined');
+                self.setState({
+                    usernumbers: data.numUsers
+                })
+            });
+
         }
     }
+
 
     renderLoginArea() {
         return (
@@ -72,7 +76,12 @@ export default class Chat extends React.Component {
 
     renderChatArea() {
         return (
-            <ChatArea chatname={this.state.username} getMessages={this.state.messages} socket={socket}/>
+            <div>
+                <ParticipantArea userNumbers={this.state.usernumbers}/>
+                <ChatArea chatname={this.state.username} socket={socket}/>
+            </div>
+
+
         )
     }
 

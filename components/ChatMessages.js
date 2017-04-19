@@ -10,6 +10,7 @@ export default class ChatMessages extends React.Component {
     }
 
     componentDidMount() {
+
         this.setState({
             message: this.props.messageList
         });
