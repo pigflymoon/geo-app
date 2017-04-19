@@ -48,7 +48,8 @@ export default class Chat extends React.Component {
                 // self.addParticipantsMessage(data);
                 self.setState({
                     messages: data,
-                    usernumbers: data.numUsers
+                    usernumbers: data.numUsers,
+                    connected: true
                 })
                 //
 
@@ -59,7 +60,7 @@ export default class Chat extends React.Component {
             // Whenever the server emits 'user joined', log it in the chat body
             socket.on('user joined', function (data) {
                 // log(data.username + ' joined');
-                console.log('data',data)
+                console.log('data', data)
                 self.setState({
                     username: data.username,
                     usernumbers: data.numUsers
@@ -80,7 +81,7 @@ export default class Chat extends React.Component {
         return (
             <div className="chat-area">
                 <ParticipantArea userNumbers={this.state.usernumbers} userName={this.state.username}/>
-                <ChatArea chatname={this.state.username} socket={socket}/>
+                <ChatArea chatname={this.state.username} socket={socket} connected={this.state.connected}/>
             </div>
 
 

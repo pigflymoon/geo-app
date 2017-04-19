@@ -25,6 +25,14 @@ var chat = serverIo.of('/chat').on('connection', function (socket) {
         });
     });
 
+    socket.on('new message', function (data) {
+        // we tell the client to execute 'new message'
+        socket.broadcast.emit('new message', {
+            username: socket.username,
+            message: data
+        });
+    });
+
     // when the client emits 'stop typing', we broadcast it to others
     socket.on('stop typing', function () {
         socket.broadcast.emit('stop typing', {

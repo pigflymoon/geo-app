@@ -7,20 +7,38 @@ export default class ChatInputMessage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: ''
+            username: this.props.chatname
         };
 
         this.keyDown = this.keyDown.bind(this);
     }
 
+    sendMessage(message) {
+
+        if (message && this.props.connected) {
+            this.props.passMessageInfo(message)
+        }
+    }
 
     keyDown(event) {
         if (event.keyCode == 13) {
             console.log('Adding...');
-            this.props.passMessageInfo(event.target.value);
+            console.log('connected', this.props.connected)
+            // if(this.props.chatname){
             let socket = this.props.socket;
+            var message = event.target.value
+            if (this.props.connected) {
+                this.sendMessage(message)
+                // this.props.passMessageInfo(event.target.value);
+                // tell server to execute 'new message' and send along one parameter
+                // socket.emit('new message', event.target.value);
+                socket.emit('new message', message);
+            }
+
             socket.emit('stop typing');
             typing = false;
+            // }
+
 
         }
     }

@@ -30,15 +30,14 @@ export default class ChatArea extends React.Component {
     }
 
 
-
-
     render() {
         return (
             <div className=" grid-column">
                 <h1>Chat Area</h1>
 
                 <ChatMessages chatname={this.state.username} messageList={this.state.messageList}/>
-                <ChatInputMessage socket={this.props.socket} passMessageInfo={this.handleMessageInfo}/>
+                <ChatInputMessage chatname={this.state.username}  socket={this.props.socket} passMessageInfo={this.handleMessageInfo}
+                                  connected={this.props.connected}/>
             </div>
         )
     }
