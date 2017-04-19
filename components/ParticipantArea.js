@@ -11,24 +11,30 @@ export default class ParticipantArea extends React.Component {
         // Display the welcome message
         let number = this.props.userNumbers;
         var message = "Welcome to Socket.IO Chat – ";
+        var user = '';
         console.log('number', number)
+        console.log('userName', this.props.userName)
+        user = this.props.userName + ' joined';
         if (number === 1) {
+
             message += "there's 1 participant";
         } else {
             message += "there are " + number + " participants";
         }
         return (
-            <li>
-                {message}
-            </li>
+
+            <ul className="messages">
+                <li className="log">{user}</li>
+                <li className="log">{message}</li>
+            </ul>
         );
     }
 
     render() {
         return (
-            <ul>
+            <div>
                 {this.renderUserNumbersArea()}
-            </ul>
+            </div>
 
         )
     }
