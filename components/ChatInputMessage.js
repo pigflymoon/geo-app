@@ -20,6 +20,7 @@ export default class ChatInputMessage extends React.Component {
         }
     }
 
+
     keyDown(event) {
         if (event.keyCode == 13) {
             console.log('Adding...');
@@ -32,7 +33,10 @@ export default class ChatInputMessage extends React.Component {
                 // this.props.passMessageInfo(event.target.value);
                 // tell server to execute 'new message' and send along one parameter
                 // socket.emit('new message', event.target.value);
-                socket.emit('new message', message);
+                socket.emit('new message', {
+                    message: message,
+                    username: this.state.username
+                });
             }
 
             socket.emit('stop typing');
