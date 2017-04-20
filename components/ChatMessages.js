@@ -10,15 +10,18 @@ export default class ChatMessages extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            username: '',
             message: []
         }
 
     }
 
-    componentDidMount() {
-
+    componentWillReceiveProps(nextProps) {
+        console.log('ChatMessage---next prop chatname', nextProps.chatname)
+        console.log('ChatMessage---next prop messages', nextProps.messageList)
         this.setState({
-            message: this.props.messageList
+            username: nextProps.chatname,
+            message: nextProps.messageList
         });
     }
 
@@ -26,7 +29,7 @@ export default class ChatMessages extends React.Component {
     // Gets the color of a username through our hash function
     getUsernameColor(message) {
         // Compute hash code
-        var username = message;
+        var username = message.message.name;
         // console.log('user',username)
         var hash = 7;
         for (var i = 0; i < username.length; i++) {

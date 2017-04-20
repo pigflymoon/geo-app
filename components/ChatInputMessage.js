@@ -7,16 +7,15 @@ export default class ChatInputMessage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: this.props.chatname
+            username: this.props.chatname//pass chatname by props to state
         };
 
         this.keyDown = this.keyDown.bind(this);
     }
 
-    sendMessage(message) {
-
+    sendMessage(message,username) {
         if (message && this.props.connected) {
-            this.props.passMessageInfo( message)
+            this.props.passMessageInfo(message,username);//pass message and who is typing back to props
         }
     }
 
@@ -30,10 +29,7 @@ export default class ChatInputMessage extends React.Component {
             var message = event.target.value;
             console.log('username', this.state.username);
             if (this.props.connected) {
-                this.sendMessage(message)
-                // this.props.passMessageInfo(event.target.value);
-                // tell server to execute 'new message' and send along one parameter
-                // socket.emit('new message', event.target.value);
+                this.sendMessage(message,this.state.username)//pass message and  who's typing
                 console.log('3---emit  new message', message)
                 socket.emit('new message', {
                     username: this.state.username,

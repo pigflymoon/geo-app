@@ -71,9 +71,11 @@ export default class Chat extends React.Component {
             // // Whenever the server emits 'new message', update the chat body
             socket.on('new message', function (data) {
                 console.log('4---get new message', data)
+                console.log('4---get username', data.message.username)
+                console.log('4---get message', data.message.message)
                 self.setState({
-                    username: data.username,
-                    messages: data.message
+                    username: data.message.username,
+                    messages: data.message.message
                 })
             });
 

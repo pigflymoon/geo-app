@@ -10,23 +10,33 @@ export default class ChatArea extends React.Component {
             username: this.props.chatname,
             messageList: []
         };
-        console.log('prop chatname',this.props.chatname)
+
 
         this.handleMessageInfo = this.handleMessageInfo.bind(this);
     }
 
-    handleMessageInfo(messages) {
-
-
-        // this.state.messageList.push(this.props.messages);
-        console.log('prop messages',messages)
-        console.log('prop chatname',this.state.username)
+    componentWillReceiveProps(nextProps) {
+        // console.log('nextProps',nextProps)
+        console.log('Chat Area ---next prop chatname', nextProps.chatname)
+        console.log('Chat Area ---next prop messages', nextProps.messages)
         this.state.messageList.push({
-            name: this.state.username,
+            name: nextProps.chatname,
+            info: nextProps.messages
+        })
+        this.setState({
+            username: nextProps.chatname,
+            messageList: this.state.messageList
+        })
+    }
+
+    handleMessageInfo(messages, username) {//get message and who is typing from props
+
+        this.state.messageList.push({
+            name: username,
             info: messages
         })
         this.setState({
-            username: this.props.chatname,
+            username: username,
             messageList: this.state.messageList
         });
 
