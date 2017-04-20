@@ -85,7 +85,7 @@ export default class Chat extends React.Component {
 
     renderLoginArea() {
         return (
-            <LoginArea getUsername={this.handleUsername} socket={socket} connected={this.state.connected}/>
+            <LoginArea getUsername={this.handleUsername}/>
         )
     }
 

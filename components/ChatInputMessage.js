@@ -24,13 +24,15 @@ export default class ChatInputMessage extends React.Component {
         if (event.keyCode == 13) {
             console.log('Adding...');
             console.log('connected', this.props.connected)
-            // if(this.props.chatname){
+
             let socket = this.props.socket;
             var message = event.target.value;
-            console.log('username', this.state.username);
+
+
             if (this.props.connected) {
                 this.sendMessage(message,this.state.username)//pass message and  who's typing
                 console.log('3---emit  new message', message)
+
                 socket.emit('new message', {
                     username: this.state.username,
                     message: message

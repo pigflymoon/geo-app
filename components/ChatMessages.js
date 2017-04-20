@@ -41,22 +41,26 @@ export default class ChatMessages extends React.Component {
     }
 
     renderMessageInfo() {
-        if (this.state.message.length <= 0) {
-            return null
-        }
-
         return (
             <ul className="messages">
                 {this.state.message.map((message, index) =>
                     <li className="message" key={index}>
-                        <span className="username"
-                              style={this.getUsernameColor({message})}>{message.name}</span>
-                        <span className="message-body">{message.info}</span>
+                        {message.info ? (
+                                <p>
+                                        <span className="username"
+                                              style={this.getUsernameColor({message})}>{message.name}</span>
+                                    <span className="message-body">{message.info}</span>
+                                </p>
+                            ) :
+                            null}
+
+
                     </li>
                 )}
             </ul>
 
         )
+
 
     }
 

@@ -31,14 +31,19 @@ export default class ChatArea extends React.Component {
 
     handleMessageInfo(messages, username) {//get message and who is typing from props
 
-        this.state.messageList.push({
-            name: username,
-            info: messages
-        })
-        this.setState({
-            username: username,
-            messageList: this.state.messageList
-        });
+        console.log('messages',messages)
+
+            this.state.messageList.push({
+                name: username,
+                info: messages
+            })
+
+            this.setState({
+                username: username,
+                messageList: this.state.messageList
+            });
+
+
 
     }
 
