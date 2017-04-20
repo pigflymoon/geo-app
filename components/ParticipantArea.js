@@ -12,8 +12,6 @@ export default class ParticipantArea extends React.Component {
         let number = this.props.userNumbers;
         var message = "Welcome to Socket.IO Chat – ";
         var user = '';
-        console.log('number', number)
-        console.log('userName', this.props.userName)
         user = this.props.userName + ' joined';
         if (number === 1) {
 

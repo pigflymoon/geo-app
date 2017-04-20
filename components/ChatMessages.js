@@ -27,7 +27,7 @@ export default class ChatMessages extends React.Component {
     getUsernameColor(message) {
         // Compute hash code
         var username = message;
-        console.log('user',username)
+        // console.log('user',username)
         var hash = 7;
         for (var i = 0; i < username.length; i++) {
             hash = username.charCodeAt(i) + (hash << 5) - hash;

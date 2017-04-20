@@ -12,7 +12,17 @@ var numUsers = 0;
 
 var chat = serverIo.of('/chat').on('connection', function (socket) {
     console.log('server side: a user connected with id %s', socket.id);
+    var addedUser = false;
+    socket.on('new message', function (data) {
+        // we tell the client to execute 'new message'
+        console.log('user is ',socket.username);
+        socket.broadcast.emit('new message', {
+            username: socket.username,
+            message: data
+        });
+    });
     socket.on('add user', function (username) {
+        if (addedUser) return;
         socket.username = username;
         console.log('username :', username);
         ++numUsers;
@@ -25,13 +35,7 @@ var chat = serverIo.of('/chat').on('connection', function (socket) {
         });
     });
 
-    socket.on('new message', function (data) {
-        // we tell the client to execute 'new message'
-        socket.broadcast.emit('new message', {
-            username: socket.username,
-            message: data
-        });
-    });
+
 
     // when the client emits 'stop typing', we broadcast it to others
     socket.on('stop typing', function () {

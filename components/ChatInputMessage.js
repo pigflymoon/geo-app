@@ -16,7 +16,7 @@ export default class ChatInputMessage extends React.Component {
     sendMessage(message) {
 
         if (message && this.props.connected) {
-            this.props.passMessageInfo(message)
+            this.props.passMessageInfo( message)
         }
     }
 
@@ -27,15 +27,17 @@ export default class ChatInputMessage extends React.Component {
             console.log('connected', this.props.connected)
             // if(this.props.chatname){
             let socket = this.props.socket;
-            var message = event.target.value
+            var message = event.target.value;
+            console.log('username', this.state.username);
             if (this.props.connected) {
                 this.sendMessage(message)
                 // this.props.passMessageInfo(event.target.value);
                 // tell server to execute 'new message' and send along one parameter
                 // socket.emit('new message', event.target.value);
+                console.log('3---emit  new message', message)
                 socket.emit('new message', {
-                    message: message,
-                    username: this.state.username
+                    username: this.state.username,
+                    message: message
                 });
             }
 

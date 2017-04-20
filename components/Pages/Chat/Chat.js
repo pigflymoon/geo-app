@@ -14,9 +14,6 @@ var message = '';
 var socket = io('/chat');
 
 // Add a connect listener
-socket.on('connect', function (socket) {
-    console.log('Client side : Connected!');
-});
 
 
 export default class Chat extends React.Component {
@@ -26,7 +23,8 @@ export default class Chat extends React.Component {
             isLoggedIn: false,
             connected: false,
             username: '',
-            messages: ''
+            messages: '',
+            usernumbers: 0
         };
         this.handleUsername = this.handleUsername.bind(this);
 
@@ -40,14 +38,18 @@ export default class Chat extends React.Component {
                 username: username
             });
 
-            self = this;
+            socket.emit('add user', username);
+            console.log('1---add user')
+
+            var self = this;
             socket.on('login', function (data) {
+                console.log('2---login')
                 console.log('login data', data)
 
                 connected = true;
                 // self.addParticipantsMessage(data);
+                console.log(data.numUsers)
                 self.setState({
-                    messages: data,
                     usernumbers: data.numUsers,
                     connected: true
                 })
@@ -55,20 +57,20 @@ export default class Chat extends React.Component {
 
             });
 
-            socket.emit('add user', username);
 
             // Whenever the server emits 'user joined', log it in the chat body
             socket.on('user joined', function (data) {
                 // log(data.username + ' joined');
-                console.log('data', data)
+                console.log('---user joined')
                 self.setState({
                     username: data.username,
                     usernumbers: data.numUsers
                 })
             });
 
-            // Whenever the server emits 'new message', update the chat body
+            // // Whenever the server emits 'new message', update the chat body
             socket.on('new message', function (data) {
+                console.log('4---get new message', data)
                 self.setState({
                     username: data.username,
                     messages: data.message
@@ -81,7 +83,7 @@ export default class Chat extends React.Component {
 
     renderLoginArea() {
         return (
-            <LoginArea getUsername={this.handleUsername}/>
+            <LoginArea getUsername={this.handleUsername} socket={socket} connected={this.state.connected}/>
         )
     }
 
@@ -89,7 +91,8 @@ export default class Chat extends React.Component {
         return (
             <div className="chat-area">
                 <ParticipantArea userNumbers={this.state.usernumbers} userName={this.state.username}/>
-                <ChatArea chatname={this.state.username} socket={socket} connected={this.state.connected}/>
+                <ChatArea chatname={this.state.username} messages={this.state.messages} socket={socket}
+                          connected={this.state.connected}/>
             </div>
 
 
