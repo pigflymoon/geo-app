@@ -13,6 +13,10 @@ export default class ChatInputMessage extends React.Component {
         this.keyDown = this.keyDown.bind(this);
     }
 
+    componentDidMount() {
+        this.refs.inputMessage.focus();
+    }
+
     sendMessage(message,username) {
         if (message && this.props.connected) {
             this.props.passMessageInfo(message,username);//pass message and who is typing back to props
@@ -41,16 +45,14 @@ export default class ChatInputMessage extends React.Component {
 
             socket.emit('stop typing');
             typing = false;
-            // }
-
-
+            this.refs.inputMessage.value = '';
         }
     }
 
     render() {
         return (
             <div>
-                <input className="input-message" onKeyDown={this.keyDown} placeholder="Type here..."/>
+                <input className="input-message"  ref="inputMessage" onKeyDown={this.keyDown} placeholder="Type here..."/>
             </div>
         )
     }
