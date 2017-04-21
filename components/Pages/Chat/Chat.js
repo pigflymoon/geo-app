@@ -4,6 +4,7 @@ import ParticipantArea from '../../ParticipantArea'
 import LoginArea from '../../LoginArea'
 import ChatArea from '../../ChatArea'
 
+
 import io from 'socket.io-client'
 
 
@@ -79,6 +80,13 @@ export default class Chat extends React.Component {
                 })
             });
 
+            // Whenever the server emits 'typing', show the typing message
+            socket.on('typing', function (data) {
+                data.typing = true;
+                data.message = 'is typing';
+            });
+
+
         }
     }
 
@@ -95,6 +103,7 @@ export default class Chat extends React.Component {
                 <ParticipantArea userNumbers={this.state.usernumbers} userName={this.state.username}/>
                 <ChatArea chatname={this.state.username} messages={this.state.messages} socket={socket}
                           connected={this.state.connected}/>
+
             </div>
 
 

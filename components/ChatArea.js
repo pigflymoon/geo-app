@@ -1,6 +1,7 @@
 import React from 'react';
 import ChatMessages from './ChatMessages'
 import ChatInputMessage from './ChatInputMessage'
+import ChatTypingInfoArea from './ChatTypingInfoArea'
 
 export default class ChatArea extends React.Component {
 
@@ -54,6 +55,7 @@ export default class ChatArea extends React.Component {
                 <h1>Chat Area</h1>
 
                 <ChatMessages chatname={this.state.username} messageList={this.state.messageList}/>
+                <ChatTypingInfoArea/>
                 <ChatInputMessage chatname={this.state.username} socket={this.props.socket}
                                   passMessageInfo={this.handleMessageInfo}
                                   connected={this.props.connected}/>

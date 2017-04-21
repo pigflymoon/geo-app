@@ -15,7 +15,7 @@ var chat = serverIo.of('/chat').on('connection', function (socket) {
     var addedUser = false;
     socket.on('new message', function (data) {
         // we tell the client to execute 'new message'
-        console.log('user is ',socket.username);
+        console.log('user is ', socket.username);
         socket.broadcast.emit('new message', {
             username: socket.username,
             message: data
@@ -35,10 +35,16 @@ var chat = serverIo.of('/chat').on('connection', function (socket) {
         });
     });
 
-
+    // when the client emits 'typing', we broadcast it to others
+    socket.on('typing', function () {
+        socket.broadcast.emit('typing', {
+            username: socket.username
+        });
+    });
 
     // when the client emits 'stop typing', we broadcast it to others
     socket.on('stop typing', function () {
+        console.log('stop typing');
         socket.broadcast.emit('stop typing', {
             username: socket.username
         });
