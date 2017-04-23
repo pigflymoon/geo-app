@@ -48,8 +48,6 @@ export default class Chat extends React.Component {
                 console.log('login data', data)
 
                 connected = true;
-                // self.addParticipantsMessage(data);
-                console.log(data.numUsers)
                 self.setState({
                     usernumbers: data.numUsers,
                     connected: true

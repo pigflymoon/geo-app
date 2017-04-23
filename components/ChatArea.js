@@ -9,17 +9,17 @@ export default class ChatArea extends React.Component {
         super(props);
         this.state = {
             username: this.props.chatname,
-            messageList: []
+            messageList: [],
+            typing: false
         };
 
 
         this.handleMessageInfo = this.handleMessageInfo.bind(this);
+        this.hanldeTyping = this.hanldeTyping.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
-        // console.log('nextProps',nextProps)
-        console.log('Chat Area ---next prop chatname', nextProps.chatname)
-        console.log('Chat Area ---next prop messages', nextProps.messages)
+
         this.state.messageList.push({
             name: nextProps.chatname,
             info: nextProps.messages
@@ -31,21 +31,21 @@ export default class ChatArea extends React.Component {
     }
 
     handleMessageInfo(messages, username) {//get message and who is typing from props
+        this.state.messageList.push({
+            name: username,
+            info: messages
+        })
 
-        console.log('messages',messages)
+        this.setState({
+            username: username,
+            messageList: this.state.messageList
+        });
+    }
 
-            this.state.messageList.push({
-                name: username,
-                info: messages
-            })
-
-            this.setState({
-                username: username,
-                messageList: this.state.messageList
-            });
-
-
-
+    hanldeTyping(TypingState) {
+        this.setState({
+            typing: TypingState
+        })
     }
 
 
@@ -55,9 +55,10 @@ export default class ChatArea extends React.Component {
                 <h1>Chat Area</h1>
 
                 <ChatMessages chatname={this.state.username} messageList={this.state.messageList}/>
-                <ChatTypingInfoArea/>
+                <ChatTypingInfoArea chatname={this.state.username}  getTypingstate={this.state.typing}/>
                 <ChatInputMessage chatname={this.state.username} socket={this.props.socket}
                                   passMessageInfo={this.handleMessageInfo}
+                                  passTypingstate={this.hanldeTyping}
                                   connected={this.props.connected}/>
             </div>
         )

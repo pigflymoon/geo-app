@@ -17,8 +17,7 @@ export default class ChatMessages extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('ChatMessage---next prop chatname', nextProps.chatname)
-        console.log('ChatMessage---next prop messages', nextProps.messageList)
+
         this.setState({
             username: nextProps.chatname,
             message: nextProps.messageList

@@ -1,6 +1,6 @@
 import React from 'react'
 
-var TYPING_TIMER_LENGTH = 400; // ms
+var TYPING_TIMER_LENGTH = 200; // ms
 var typing = false;
 var lastTypingTime;
 
@@ -10,7 +10,8 @@ export default class ChatInputMessage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: this.props.chatname//pass chatname by props to state
+            username: this.props.chatname,//pass chatname by props to state
+            typing: false
         };
 
         this.keyDown = this.keyDown.bind(this);
@@ -54,7 +55,7 @@ export default class ChatInputMessage extends React.Component {
     }
 
     handleChange(event) {
-        console.log('I am typing in input message box')
+
         this.updateTyping();
     }
 
@@ -63,6 +64,7 @@ export default class ChatInputMessage extends React.Component {
             if (!typing) {
                 typing = true;
                 this.props.socket.emit('typing');
+                this.props.passTypingstate(typing);
             }
             lastTypingTime = (new Date()).getTime();
             var self = this;
@@ -70,9 +72,9 @@ export default class ChatInputMessage extends React.Component {
                 var typingTimer = (new Date()).getTime();
                 var timeDiff = typingTimer - lastTypingTime;
                 if (timeDiff >= TYPING_TIMER_LENGTH && typing) {
-                    console.log('stop typing')
                     self.props.socket.emit('stop typing');
                     typing = false;
+                    self.props.passTypingstate(typing);
                 }
             }, TYPING_TIMER_LENGTH);
         }
