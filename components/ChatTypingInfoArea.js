@@ -18,16 +18,18 @@ export default class ChatTypingInfoArea extends React.Component {
     }
 
     render() {
-        var items = '';
-        console.log('typing state is ', this.state.typingState)
-        if (this.state.typingState) {
-            items = this.props.chatname + ' is typing'
-        }
+
 
         return (
-            <ReactCSSTransitionGroup transitionName="example"
+            <ReactCSSTransitionGroup component="ul" className="messages" transitionName="example"
                                      transitionEnterTimeout={1500} transitionLeaveTimeout={1500}>
-                <div className="isTyping">{items}</div>
+
+                {this.state.typingState ? (
+                        <li className="isTyping message">
+                            <span className="username">{this.props.chatname}</span>
+                            <span className="message-body">is typing</span></li>
+                    ) : null}
+
 
             </ReactCSSTransitionGroup>
         );
