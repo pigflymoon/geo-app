@@ -53,20 +53,20 @@
   height: 30px;
 }
 
-.example-enter {
+.typing-enter {
   opacity: 0.01;
 }
 
-.example-enter.example-enter-active {
+.typing-enter.typing-enter-active {
   opacity: 1;
   transition: opacity 500ms ease-in;
 }
 
-.example-leave {
+.typing-leave {
   opacity: 1;
 }
 
-.example-leave.example-leave-active {
+.typing-leave.typing-leave-active {
   opacity: 0.01;
   transition: opacity 500ms ease-in;
 }

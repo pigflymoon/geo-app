@@ -21,7 +21,7 @@ export default class ChatTypingInfoArea extends React.Component {
 
 
         return (
-            <ReactCSSTransitionGroup component="ul" className="messages" transitionName="example"
+            <ReactCSSTransitionGroup component="ul" className="messages" transitionName="typing"
                                      transitionEnterTimeout={1500} transitionLeaveTimeout={1500}>
 
                 {this.state.typingState ? (
