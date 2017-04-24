@@ -1,8 +1,5 @@
 import React from 'react'
 
-var TYPING_TIMER_LENGTH = 200; // ms
-var typing = false;
-var lastTypingTime;
 
 
 export default class ChatInputMessage extends React.Component {
@@ -10,12 +7,11 @@ export default class ChatInputMessage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: this.props.chatname,//pass chatname by props to state
-            typing: false
+            username: this.props.chatname//pass chatname by props to state
+
         };
 
         this.keyDown = this.keyDown.bind(this);
-        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -48,44 +44,18 @@ export default class ChatInputMessage extends React.Component {
                 });
             }
 
-            socket.emit('stop typing');
-            typing = false;
             this.refs.inputMessage.value = '';
         }
     }
 
-    handleChange(event) {
 
-        this.updateTyping();
-    }
-
-    updateTyping() {
-        if (this.props.connected) {
-            if (!typing) {
-                typing = true;
-                this.props.socket.emit('typing');
-                this.props.passTypingstate(typing);
-            }
-            lastTypingTime = (new Date()).getTime();
-            var self = this;
-            setTimeout(function () {
-                var typingTimer = (new Date()).getTime();
-                var timeDiff = typingTimer - lastTypingTime;
-                if (timeDiff >= TYPING_TIMER_LENGTH && typing) {
-                    self.props.socket.emit('stop typing');
-                    typing = false;
-                    self.props.passTypingstate(typing);
-                }
-            }, TYPING_TIMER_LENGTH);
-        }
-    }
 
 
     render() {
         return (
             <div>
                 <input className="input-message" ref="inputMessage" onKeyDown={this.keyDown} placeholder="Type here..."
-                       onChange={this.handleChange}/>
+                      />
             </div>
         )
     }

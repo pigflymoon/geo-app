@@ -1,7 +1,6 @@
 import React from 'react';
 import ChatMessages from './ChatMessages'
 import ChatInputMessage from './ChatInputMessage'
-import ChatTypingInfoArea from './ChatTypingInfoArea'
 
 export default class ChatArea extends React.Component {
 
@@ -9,13 +8,11 @@ export default class ChatArea extends React.Component {
         super(props);
         this.state = {
             username: this.props.chatname,
-            messageList: [],
-            typing: false
+            messageList: []
         };
 
 
         this.handleMessageInfo = this.handleMessageInfo.bind(this);
-        this.hanldeTyping = this.hanldeTyping.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -42,12 +39,6 @@ export default class ChatArea extends React.Component {
         });
     }
 
-    hanldeTyping(TypingState) {
-        this.setState({
-            typing: TypingState
-        })
-    }
-
 
     render() {
         return (
@@ -55,10 +46,8 @@ export default class ChatArea extends React.Component {
                 <h1>Chat Area</h1>
 
                 <ChatMessages chatname={this.state.username} messageList={this.state.messageList}/>
-                <ChatTypingInfoArea chatname={this.state.username}  getTypingstate={this.state.typing}/>
                 <ChatInputMessage chatname={this.state.username} socket={this.props.socket}
                                   passMessageInfo={this.handleMessageInfo}
-                                  passTypingstate={this.hanldeTyping}
                                   connected={this.props.connected}/>
             </div>
         )

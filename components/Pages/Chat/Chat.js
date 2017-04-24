@@ -78,13 +78,6 @@ export default class Chat extends React.Component {
                 })
             });
 
-            // Whenever the server emits 'typing', show the typing message
-            socket.on('typing', function (data) {
-                data.typing = true;
-                data.message = 'is typing';
-            });
-
-
         }
     }
 
