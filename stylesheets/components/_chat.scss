@@ -1,11 +1,18 @@
 .login-area {
+  justify-content: center;
   align-items: center;
   font-size: 24px;
   font-family: "Roboto";
+  background-color: color("grey", "lighten-4");
   //"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica;
-
-  .title {
-    text-align: center;
+  .form {
+    background-color: white;
+  }
+  .unnamed {
+    background-image: url("../images/unnamed.jpg");
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
   }
 
   .username-input {
@@ -16,6 +23,20 @@
     padding-bottom: 15px;
     text-align: center;
     width: 400px;
+  }
+  .username,
+  .email {
+    display: block;
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+    background-color: #f0f1f3;
+    border: 1px solid color("grey", "lighten-2");
+    border-radius: 3px;
+    box-shadow: 0px 3px 3px #e3e4e6;
+    margin-bottom: 20px;
+    overflow: hidden;
   }
 }
 
