@@ -1,4 +1,5 @@
 .login-area {
+  padding: 100px 0;
   justify-content: center;
   align-items: center;
   font-size: 24px;
@@ -6,13 +7,18 @@
   background-color: color("grey", "lighten-4");
   //"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica;
   .form {
+    padding: 50px 0;
     background-color: white;
   }
   .unnamed {
-    background-image: url("../images/unnamed.jpg");
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    .fa {
+      font-size: 120px;
+      color: color("grey", "lighten-2");
+    }
   }
 
   .username-input {
@@ -32,7 +38,7 @@
     text-align: center;
     font-size: 14px;
     background-color: #f0f1f3;
-    border: 1px solid color("grey", "lighten-2");
+    border: 1px solid color("grey", "lighten-1");
     border-radius: 3px;
     box-shadow: 0px 3px 3px #e3e4e6;
     margin-bottom: 20px;
