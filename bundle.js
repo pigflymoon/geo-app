@@ -19423,15 +19423,6 @@ var NavBar = function (_React$Component) {
                                     { to: '/quakes' },
                                     'Quakes'
                                 )
-                            ),
-                            _react2.default.createElement(
-                                'li',
-                                null,
-                                _react2.default.createElement(
-                                    _reactRouterDom.Link,
-                                    { to: '/chat' },
-                                    'Chat'
-                                )
                             )
                         ),
                         this.props.children
