@@ -10,6 +10,7 @@ import './stylesheets/main.scss'
 import Home from './components/Pages/Home/Home'
 import Quakes from './components/Pages/Quakes/Quakes'
 import Quake from './components/Pages/Quake/Quake'
+import Chat from './components/Pages/Chat/Chat'
 
 
 
@@ -21,6 +22,7 @@ render((
             <Route path="/home" component={Home}/>
             <Route path="/quakes" component={Quakes}/>
             <Route path="/quake/:publicID" component={Quake}/>
+            <Route path="/chat" component={Chat}></Route>
         </div>
     </Router >
 
