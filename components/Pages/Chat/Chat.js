@@ -3,8 +3,6 @@ import Page from "../Page";
 import ParticipantArea from '../../ParticipantArea'
 import LoginArea from '../../LoginArea'
 import ChatArea from '../../ChatArea'
-
-
 import io from 'socket.io-client'
 
 
